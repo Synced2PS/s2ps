@@ -1,0 +1,1983 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synced2PS DGG System - Apple Gift Card Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --synced-green: #00D26A;
+            --synced-dark: #0A0A0A;
+            --synced-card: #1C1C1E;
+            --synced-border: #38383A;
+            --synced-success: #00D26A;
+            --synced-glow: 0 10px 40px rgba(0, 210, 106, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1A1A1A 100%);
+            color: #FFFFFF;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(0, 210, 106, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 210, 106, 0.05) 0%, transparent 40%);
+            z-index: -1;
+        }
+        
+        .nv-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header - Updated for better logo fit */
+        .nv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nv-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .nv-logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--synced-green), #00B85E);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+            box-shadow: var(--synced-glow);
+            flex-shrink: 0;
+        }
+        
+        .nv-title-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nv-title {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFFFFF, var(--synced-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .nv-subtitle {
+            font-size: 13px;
+            color: #8E8E93;
+            margin-top: 3px;
+            line-height: 1.3;
+        }
+        
+        .nv-nav {
+            display: flex;
+            gap: 30px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
+        .nv-nav a {
+            color: #8E8E93;
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 8px 0;
+            position: relative;
+            white-space: nowrap;
+        }
+        
+        .nv-nav a:hover {
+            color: white;
+        }
+        
+        .nv-nav a.active {
+            color: white;
+        }
+        
+        .nv-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--synced-green), #00B85E);
+            border-radius: 2px;
+        }
+        
+        /* Sale Banner */
+        .nv-sale-banner {
+            background: linear-gradient(90deg, #FF3B30, #FF9500);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 18px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 4px 20px rgba(255, 59, 48, 0.3);
+        }
+        
+        .nv-sale-banner span {
+            background: white;
+            color: #FF3B30;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin: 0 5px;
+            font-weight: 800;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Main Content */
+        .nv-main {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        /* Info Panel */
+        .nv-info-panel {
+            background: rgba(28, 28, 30, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--synced-border);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--synced-glow);
+        }
+        
+        .nv-info-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, white, var(--synced-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nv-info-subtitle {
+            font-size: 16px;
+            color: #8E8E93;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .nv-features {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .nv-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .nv-feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 210, 106, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--synced-green);
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        
+        .nv-feature-text h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: white;
+        }
+        
+        .nv-feature-text p {
+            font-size: 14px;
+            color: #8E8E93;
+            line-height: 1.5;
+        }
+        
+        .nv-stats {
+            background: rgba(10, 10, 10, 0.6);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid var(--synced-border);
+        }
+        
+        .nv-stats-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nv-stats-title i {
+            color: var(--synced-success);
+        }
+        
+        .nv-stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .nv-stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .nv-stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+        }
+        
+        .nv-stat-label {
+            font-size: 12px;
+            color: #8E8E93;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Form Panel */
+        .nv-form-panel {
+            background: rgba(28, 28, 30, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--synced-border);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--synced-glow);
+        }
+        
+        .nv-form-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        
+        .nv-form-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .nv-form-subtitle {
+            font-size: 16px;
+            color: #8E8E93;
+            line-height: 1.5;
+        }
+        
+        /* Progress Bar */
+        .nv-progress {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .nv-progress::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--synced-border);
+            z-index: 1;
+        }
+        
+        .nv-progress-line {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--synced-green), #00B85E);
+            z-index: 2;
+            transition: width 0.5s ease;
+        }
+        
+        .nv-progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .nv-progress-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--synced-card);
+            border: 2px solid var(--synced-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: #8E8E93;
+            margin-bottom: 8px;
+            transition: all 0.3s;
+        }
+        
+        .nv-progress-step.active .nv-progress-circle {
+            background: var(--synced-green);
+            border-color: var(--synced-green);
+            color: white;
+        }
+        
+        .nv-progress-step.completed .nv-progress-circle {
+            background: var(--synced-green);
+            border-color: var(--synced-green);
+            color: white;
+        }
+        
+        .nv-progress-label {
+            font-size: 13px;
+            color: #8E8E93;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .nv-progress-step.active .nv-progress-label {
+            color: white;
+            font-weight: 500;
+        }
+        
+        /* Form Styles */
+        .nv-form-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .nv-form-step.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .nv-step-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nv-step-title span {
+            width: 30px;
+            height: 30px;
+            background: rgba(0, 210, 106, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--synced-green);
+            font-weight: 700;
+        }
+        
+        .nv-form-group {
+            margin-bottom: 20px;
+        }
+        
+        .nv-form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #E2E8F0;
+            font-size: 15px;
+        }
+        
+        .nv-form-label .required {
+            color: #FF3B30;
+        }
+        
+        .nv-form-input, .nv-form-select {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid var(--synced-border);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+        
+        .nv-form-input:focus, .nv-form-select:focus {
+            outline: none;
+            border-color: var(--synced-green);
+            box-shadow: 0 0 0 3px rgba(0, 210, 106, 0.2);
+        }
+        
+        .nv-form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238E8E93' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 16px;
+        }
+        
+        .nv-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        /* Plan Selection */
+        .nv-plan-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .nv-plan-item {
+            background: rgba(10, 10, 10, 0.6);
+            border: 2px solid var(--synced-border);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nv-plan-item:hover {
+            border-color: var(--synced-green);
+            transform: translateY(-2px);
+        }
+        
+        .nv-plan-item.selected {
+            border-color: var(--synced-green);
+            background: rgba(0, 210, 106, 0.1);
+        }
+        
+        .nv-plan-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--synced-green);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .nv-plan-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 5px;
+        }
+        
+        .nv-plan-duration {
+            color: var(--synced-green);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .nv-plan-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .nv-plan-price .currency {
+            font-size: 16px;
+            color: #8E8E93;
+            margin-right: 5px;
+        }
+        
+        .nv-plan-price .original-price {
+            font-size: 16px;
+            color: #8E8E93;
+            text-decoration: line-through;
+            margin-right: 10px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .nv-plan-price .sale-price {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .nv-plan-price .discount-badge {
+            background: linear-gradient(90deg, #FF3B30, #FF9500);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        
+        .nv-plan-features {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .nv-plan-features li {
+            color: #8E8E93;
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nv-plan-features li i {
+            color: var(--synced-success);
+            font-size: 12px;
+        }
+        
+        /* Summary */
+        .nv-summary {
+            background: rgba(10, 10, 10, 0.6);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid var(--synced-border);
+            margin-top: 10px;
+        }
+        
+        .nv-summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .nv-summary-item:last-child {
+            border-bottom: none;
+        }
+        
+        .nv-summary-label {
+            color: #8E8E93;
+        }
+        
+        .nv-summary-value {
+            font-weight: 600;
+            color: white;
+        }
+        
+        .nv-summary-total {
+            font-size: 18px;
+            color: var(--synced-success);
+            font-weight: 700;
+        }
+        
+        /* Payment Options */
+        .nv-payment-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .nv-payment-option {
+            flex: 1;
+            background: rgba(10, 10, 10, 0.6);
+            border: 2px solid var(--synced-border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nv-payment-option:hover {
+            border-color: var(--synced-green);
+        }
+        
+        .nv-payment-option.selected {
+            border-color: var(--synced-green);
+            background: rgba(0, 210, 106, 0.1);
+        }
+        
+        .nv-payment-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .nv-payment-card .nv-payment-icon {
+            color: var(--synced-green);
+        }
+        
+        .nv-payment-crypto .nv-payment-icon {
+            color: #F7931A;
+        }
+        
+        .nv-payment-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: white;
+        }
+        
+        .nv-payment-desc {
+            color: #8E8E93;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .nv-contact-info {
+            background: rgba(0, 210, 106, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid var(--synced-green);
+            text-align: center;
+        }
+        
+        .nv-contact-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .nv-contact-items {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .nv-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nv-contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 210, 106, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--synced-green);
+            font-size: 18px;
+        }
+        
+        .nv-contact-text {
+            text-align: left;
+        }
+        
+        .nv-contact-label {
+            font-size: 12px;
+            color: #8E8E93;
+        }
+        
+        .nv-contact-value {
+            font-weight: 600;
+            color: white;
+            font-size: 15px;
+        }
+        
+        /* Form Footer */
+        .nv-form-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid var(--synced-border);
+        }
+        
+        .nv-btn {
+            padding: 16px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            border: none;
+        }
+        
+        .nv-btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #8E8E93;
+            border: 1px solid var(--synced-border);
+        }
+        
+        .nv-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .nv-btn-primary {
+            background: linear-gradient(135deg, var(--synced-green), #00B85E);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 210, 106, 0.3);
+        }
+        
+        .nv-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 210, 106, 0.4);
+        }
+        
+        .nv-btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Modal */
+        .nv-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .nv-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .nv-modal-content {
+            background: var(--synced-card);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid var(--synced-border);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .nv-modal-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 210, 106, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--synced-success);
+            font-size: 40px;
+            margin: 0 auto 25px;
+        }
+        
+        .nv-modal-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .nv-modal-text {
+            font-size: 16px;
+            color: #8E8E93;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .nv-modal-email {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 30px;
+            border: 1px solid var(--synced-border);
+        }
+        
+        /* Footer */
+        .nv-footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #8E8E93;
+            font-size: 14px;
+        }
+        
+        .nv-footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nv-footer-links a {
+            color: #8E8E93;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nv-footer-links a:hover {
+            color: white;
+        }
+        
+        /* Pages */
+        .nv-page {
+            display: none;
+        }
+        
+        .nv-page.active {
+            display: block;
+        }
+        
+        .nv-page-content {
+            background: rgba(28, 28, 30, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--synced-border);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--synced-glow);
+            margin-top: 30px;
+        }
+        
+        .nv-page-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .nv-how-it-works {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .nv-step {
+            background: rgba(10, 10, 10, 0.6);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid var(--synced-border);
+        }
+        
+        .nv-step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--synced-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .nv-step-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .nv-step-desc {
+            color: #8E8E93;
+            line-height: 1.6;
+        }
+        
+        .nv-step-highlight {
+            background: rgba(0, 210, 106, 0.1);
+            border-left: 4px solid var(--synced-green);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+        
+        .nv-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .nv-contact-card {
+            background: rgba(10, 10, 10, 0.6);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid var(--synced-border);
+            text-align: center;
+        }
+        
+        .nv-contact-card-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 210, 106, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--synced-green);
+            font-size: 30px;
+            margin: 0 auto 20px;
+        }
+        
+        .nv-contact-card-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .nv-contact-card-desc {
+            color: #8E8E93;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .nv-contact-card-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            background: rgba(0, 210, 106, 0.1);
+            padding: 12px 20px;
+            border-radius: 10px;
+            display: inline-block;
+            border: 1px solid var(--synced-border);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nv-main {
+                grid-template-columns: 1fr;
+            }
+            
+            .nv-form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .nv-plan-group {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nv-header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+                padding: 25px 0;
+            }
+            
+            .nv-brand {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .nv-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .nv-payment-options {
+                flex-direction: column;
+            }
+            
+            .nv-contact-items {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nv-title {
+                font-size: 22px;
+            }
+            
+            .nv-subtitle {
+                font-size: 12px;
+            }
+            
+            .nv-plan-price .sale-price {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nv-container {
+                padding: 15px;
+            }
+            
+            .nv-header {
+                padding: 15px 0;
+            }
+            
+            .nv-logo {
+                width: 42px;
+                height: 42px;
+                font-size: 18px;
+            }
+            
+            .nv-title {
+                font-size: 20px;
+            }
+            
+            .nv-nav {
+                font-size: 14px;
+                gap: 10px;
+            }
+            
+            .nv-info-panel, 
+            .nv-form-panel,
+            .nv-page-content {
+                padding: 25px;
+            }
+            
+            .nv-plan-price {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nv-container">
+        <!-- Header -->
+        <header class="nv-header">
+            <div class="nv-brand">
+                <div class="nv-logo">S2PS</div>
+                <div class="nv-title-wrapper">
+                    <div class="nv-title">Synced2PS DGG System</div>
+                    <div class="nv-subtitle">Apple Gift Card Generation Platform</div>
+                </div>
+            </div>
+            <nav class="nv-nav">
+                <a href="#" class="active" data-page="register">Register</a>
+                <a href="#" data-page="how-it-works" class="">How It Works</a>
+                <a href="#" data-page="pricing" class="">Pricing</a>
+                <a href="#" data-page="contact" class="">Contact</a>
+            </nav>
+        </header>
+        
+        <!-- Sale Banner -->
+        <div class="nv-sale-banner">
+            🎉 NEW YEAR SALE: UP TO 40% OFF ALL PLANS! 🎉
+            <span>LIMITED TIME OFFER</span>
+        </div>
+        
+        <!-- Main Content (Register Page) -->
+        <main id="registerPage" class="nv-page active">
+            <div class="nv-main">
+                <!-- Info Panel -->
+                <div class="nv-info-panel">
+                    <h2 class="nv-info-title">Generate Apple Gift Cards</h2>
+                    <p class="nv-info-subtitle">
+                        Join our exclusive Synced2PS DGG System. Get access to our private Apple gift card generator 
+                        and start generating £950 gift cards daily. Convert them to Apple products or cash.
+                    </p>
+                    
+                    <div class="nv-features">
+                        <div class="nv-feature">
+                            <div class="nv-feature-icon">
+                                <i class="fab fa-apple"></i>
+                            </div>
+                            <div class="nv-feature-text">
+                                <h4>Apple Products Only</h4>
+                                <p>Generate £950 Apple gift cards redeemable for iPhones, MacBooks, AirPods, and more.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="nv-feature">
+                            <div class="nv-feature-icon">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <div class="nv-feature-text">
+                                <h4>Up to 21 Cards Weekly</h4>
+                                <p>Generate up to 21 gift cards per week, each worth £950. That's almost up to £20k weekly potential.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="nv-feature">
+                            <div class="nv-feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="nv-feature-text">
+                                <h4>1:1 Personal Guidance</h4>
+                                <p>I'll personally guide you through your first orders and remain available via call or text.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nv-stats">
+                        <h3 class="nv-stats-title"><i class="fas fa-chart-line"></i> System Statistics</h3>
+                        <div class="nv-stats-grid">
+                            <div class="nv-stat-item">
+                                <div class="nv-stat-number">827</div>
+                                <div class="nv-stat-label">Active Users</div>
+                            </div>
+                            <div class="nv-stat-item">
+                                <div class="nv-stat-number">50M+</div>
+                                <div class="nv-stat-label">Cards Per Week</div>
+                            </div>
+                            <div class="nv-stat-item">
+                                <div class="nv-stat-number">100%</div>
+                                <div class="nv-stat-label">Success Rate</div>
+                            </div>
+                            <div class="nv-stat-item">
+                                <div class="nv-stat-number">24/7</div>
+                                <div class="nv-stat-label">Support</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Form Panel -->
+                <div class="nv-form-panel">
+                    <div class="nv-form-header">
+                        <h2 class="nv-form-title">Create Your Account</h2>
+                        <p class="nv-form-subtitle">Complete the registration form to access the DGG System</p>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="nv-progress">
+                        <div class="nv-progress-line" id="progressLine" style="width: 50%;"></div>
+                        <div class="nv-progress-step completed" data-step="1">
+                            <div class="nv-progress-circle">1</div>
+                            <div class="nv-progress-label">Personal Info</div>
+                        </div>
+                        <div class="nv-progress-step active" data-step="2">
+                            <div class="nv-progress-circle">2</div>
+                            <div class="nv-progress-label">Plan Selection</div>
+                        </div>
+                        <div class="nv-progress-step" data-step="3">
+                            <div class="nv-progress-circle">3</div>
+                            <div class="nv-progress-label">Payment</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 1: Personal Information -->
+                    <div class="nv-form-step" id="step1">
+                        <h3 class="nv-step-title"><span>1</span> Personal Information</h3>
+                        
+                        <div class="nv-form-row">
+                            <div class="nv-form-group">
+                                <label for="firstName" class="nv-form-label">First Name <span class="required">*</span></label>
+                                <input type="text" id="firstName" class="nv-form-input" placeholder="Enter your first name" required="" style="">
+                            </div>
+                            
+                            <div class="nv-form-group">
+                                <label for="lastName" class="nv-form-label">Last Name <span class="required">*</span></label>
+                                <input type="text" id="lastName" class="nv-form-input" placeholder="Enter your last name" required="" style="">
+                            </div>
+                        </div>
+                        
+                        <div class="nv-form-group">
+                            <label for="email" class="nv-form-label">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" class="nv-form-input" placeholder="your.email@example.com" required="" style="">
+                        </div>
+                        
+                        <div class="nv-form-row">
+                            <div class="nv-form-group">
+                                <label for="phone" class="nv-form-label">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="phone" class="nv-form-input" placeholder="+44 7375 674775" required="" style="">
+                            </div>
+                            
+                            <div class="nv-form-group">
+                                <label for="country" class="nv-form-label">Country <span class="required">*</span></label>
+                                <select id="country" class="nv-form-select" required="" style="">
+                                    <option value="">Select your country</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="US">United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="FR">France</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="nv-form-group">
+                            <label for="registrationDate" class="nv-form-label">Registration Date <span class="required">*</span></label>
+                            <input type="date" id="registrationDate" class="nv-form-input" required="" min="2025-12-26">
+                        </div>
+                        
+                        <div class="nv-form-footer">
+                            <button class="nv-btn nv-btn-secondary" disabled="">Previous</button>
+                            <button class="nv-btn nv-btn-primary" id="nextStep1">Next: Plan Selection</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Plan Selection -->
+                    <div class="nv-form-step active" id="step2">
+                        <h3 class="nv-step-title"><span>2</span> Select Your Plan</h3>
+                        
+                        <div class="nv-form-group">
+                            <label class="nv-form-label">Subscription Duration <span class="required">*</span></label>
+                            <div class="nv-plan-group">
+                                <div class="nv-plan-item" data-plan="basic" data-price="200" data-duration="3 Days">
+                                    <div class="nv-plan-title">Basic Plan</div>
+                                    <div class="nv-plan-duration">3 Days Access</div>
+                                    <div class="nv-plan-price">
+                                        <span class="original-price">£300</span>
+                                        <div class="sale-price">
+                                            <span class="currency">£</span>200
+                                            <span class="discount-badge">33% OFF</span>
+                                        </div>
+                                    </div>
+                                    <ul class="nv-plan-features">
+                                        <li><i class="fas fa-check"></i> 2 Apple Gift Cards per 3 days</li>
+                                        <li><i class="fas fa-check"></i> £950 Per Card</li>
+                                        <li><i class="fas fa-check"></i> Personal 1:1 Guidance</li>
+                                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="nv-plan-item" data-plan="standard" data-price="350" data-duration="7 Days">
+                                    <div class="nv-plan-title">Standard Plan</div>
+                                    <div class="nv-plan-duration">7 Days Access</div>
+                                    <div class="nv-plan-price">
+                                        <span class="original-price">£500</span>
+                                        <div class="sale-price">
+                                            <span class="currency">£</span>350
+                                            <span class="discount-badge">30% OFF</span>
+                                        </div>
+                                    </div>
+                                    <ul class="nv-plan-features">
+                                        <li><i class="fas fa-check"></i> 5 Apple Gift Cards Weekly</li>
+                                        <li><i class="fas fa-check"></i> £950 Per Card</li>
+                                        <li><i class="fas fa-check"></i> Personal 1:1 Guidance</li>
+                                        <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="nv-plan-item selected" data-plan="pro" data-price="600" data-duration="14 Days">
+                                    <div class="nv-plan-badge">Most Popular</div>
+                                    <div class="nv-plan-title">Pro Plan</div>
+                                    <div class="nv-plan-duration">14 Days Access</div>
+                                    <div class="nv-plan-price">
+                                        <span class="original-price">£900</span>
+                                        <div class="sale-price">
+                                            <span class="currency">£</span>600
+                                            <span class="discount-badge">33% OFF</span>
+                                        </div>
+                                    </div>
+                                    <ul class="nv-plan-features">
+                                        <li><i class="fas fa-check"></i> 12 Apple Gift Cards Bi-Weekly</li>
+                                        <li><i class="fas fa-check"></i> £950 Per Card</li>
+                                        <li><i class="fas fa-check"></i> Personal 1:1 Guidance</li>
+                                        <li><i class="fas fa-check"></i> VIP Priority Support</li>
+                                        <li><i class="fas fa-check"></i> Early Access Features</li>
+                                    </ul>
+                                </div>
+                                <div class="nv-plan-item" data-plan="ultimate" data-price="2500" data-duration="30 Days">
+                                    <div class="nv-plan-title">Ultimate Plan</div>
+                                    <div class="nv-plan-duration">30 Days Access</div>
+                                    <div class="nv-plan-price">
+                                        <span class="original-price">£4,000</span>
+                                        <div class="sale-price">
+                                            <span class="currency">£</span>2,500
+                                            <span class="discount-badge">38% OFF</span>
+                                        </div>
+                                    </div>
+                                    <ul class="nv-plan-features">
+                                        <li><i class="fas fa-check"></i> 3 Apple Gift Cards Daily</li>
+                                        <li><i class="fas fa-check"></i> £950 Per Card</li>
+                                        <li><i class="fas fa-check"></i> Personal 1:1 Guidance</li>
+                                        <li><i class="fas fa-check"></i> VIP Priority Support</li>
+                                        <li><i class="fas fa-check"></i> Early Access Features</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="nv-form-group">
+                            <label for="cardValue" class="nv-form-label">Card Value <span class="required">*</span></label>
+                            <select id="cardValue" class="nv-form-select" required="">
+                                <option value="950">£950 GBP</option>
+                            </select>
+                        </div>
+                        
+                        <div class="nv-form-group">
+                            <label for="retailer" class="nv-form-label">Retailer <span class="required">*</span></label>
+                            <select id="retailer" class="nv-form-select" required="">
+                                <option value="apple">Apple Store</option>
+                            </select>
+                        </div>
+                        
+                        <div class="nv-summary">
+                            <h4 style="margin-bottom: 15px; color: white;">Registration Summary</h4>
+                            <div class="nv-summary-item">
+                                <div class="nv-summary-label">Selected Plan:</div>
+                                <div class="nv-summary-value" id="selectedPlan">Pro (14 Days)</div>
+                            </div>
+                            <div class="nv-summary-item">
+                                <div class="nv-summary-label">Cards:</div>
+                                <div class="nv-summary-value" id="dailyCards">12 × £950 Apple Cards (bi-weekly)</div>
+                            </div>
+                            <div class="nv-summary-item">
+                                <div class="nv-summary-label nv-summary-total">Total Due:</div>
+                                <div class="nv-summary-value nv-summary-total" id="totalDue">£600.00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="nv-form-footer">
+                            <button class="nv-btn nv-btn-secondary" id="prevStep2">Previous</button>
+                            <button class="nv-btn nv-btn-primary" id="nextStep2">Next: Payment</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Payment -->
+                    <div class="nv-form-step" id="step3">
+                        <h3 class="nv-step-title"><span>3</span> Complete Payment</h3>
+                        
+                        <div class="nv-form-group">
+                            <label class="nv-form-label">Payment Method <span class="required">*</span></label>
+                            <div class="nv-payment-options">
+                                <div class="nv-payment-option nv-payment-card" data-method="card">
+                                    <div class="nv-payment-icon">
+                                        <i class="fas fa-credit-card"></i>
+                                    </div>
+                                    <div class="nv-payment-title">Bank Transfer</div>
+                                    <div class="nv-payment-desc">Secure bank transfer payment</div>
+                                </div>
+                                
+                                <div class="nv-payment-option nv-payment-crypto" data-method="crypto">
+                                    <div class="nv-payment-icon">
+                                        <i class="fas fa-coins"></i>
+                                    </div>
+                                    <div class="nv-payment-title">Cryptocurrency</div>
+                                    <div class="nv-payment-desc">BTC, ETH, USDT, or other crypto</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="nv-contact-info">
+                            <div class="nv-contact-title">Contact Me to Complete Payment</div>
+                            <div class="nv-contact-items">
+                                <div class="nv-contact-item">
+                                    <div class="nv-contact-icon">
+                                        <i class="fab fa-snapchat"></i>
+                                    </div>
+                                    <div class="nv-contact-text">
+                                        <div class="nv-contact-label">Snapchat</div>
+                                        <div class="nv-contact-value">synced22ps</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="nv-contact-item">
+                                    <div class="nv-contact-icon">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </div>
+                                    <div class="nv-contact-text">
+                                        <div class="nv-contact-label">WhatsApp</div>
+                                        <div class="nv-contact-value">Currently N/A</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; color: #8E8E93; font-size: 14px;">
+                                Contact me on Snapchat to receive payment instructions and complete your registration.
+                            </p>
+                        </div>
+                        
+                        <div class="nv-form-footer">
+                            <button class="nv-btn nv-btn-secondary" id="prevStep3">Previous</button>
+                            <button class="nv-btn nv-btn-primary" id="submitRegistration" disabled="">Complete Registration</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- How It Works Page -->
+        <div id="howItWorksPage" class="nv-page">
+            <div class="nv-page-content">
+                <h2 class="nv-page-title">How It Works</h2>
+                <div class="nv-how-it-works">
+                    <div class="nv-step">
+                        <div class="nv-step-number">1</div>
+                        <h3 class="nv-step-title">Register &amp; Subscribe</h3>
+                        <p class="nv-step-desc">
+                            Register for the Synced2PS DGG System with a subscription fee starting from £200. Choose your plan duration 
+                            (3 days, 7 days, 14 days, or 30 days). All plans include access to our private Apple gift card generator.
+                        </p>
+                    </div>
+                    
+                    <div class="nv-step">
+                        <div class="nv-step-number">2</div>
+                        <h3 class="nv-step-title">Access the Generator</h3>
+                        <p class="nv-step-desc">
+                            After registration and payment, you'll receive immediate access to our exclusive Apple gift card generator. With your 
+                            subscription, you can generate up to 21 gift card codes weekly, each worth £950.
+                        </p>
+                    </div>
+                    
+                    <div class="nv-step">
+                        <div class="nv-step-number">3</div>
+                        <h3 class="nv-step-title">Redeem Apple Products</h3>
+                        <p class="nv-step-desc">
+                            Use your generated gift card codes on Apple's official website to purchase products like 
+                            iPhones, AirPods, MacBooks, iPads, and Apple Watches. All codes are valid and redeemable instantly.
+                        </p>
+                        <div class="nv-step-highlight">
+                            <strong>Delivery Options:</strong> Products can be delivered to your home or picked up at an Apple Store for same-day delivery 
+                            if your selected products are available at the chosen branch.
+                        </div>
+                    </div>
+                    
+                    <div class="nv-step">
+                        <div class="nv-step-number">4</div>
+                        <h3 class="nv-step-title">Profit or Personal Use</h3>
+                        <p class="nv-step-desc">
+                            Sell your Apple products for cash profits on platforms like CEX, Facebook Marketplace, eBay, 
+                            or local marketplaces. Alternatively, keep them for personal use.
+                        </p>
+                        <div class="nv-step-highlight">
+                            <strong>Profit Potential:</strong> With up to 21 × £950 cards weekly, that's almost £20,000 in potential value every week. 
+                            Over 30 days, that's up to £80,000 in potential Apple product value.
+                        </div>
+                    </div>
+                    
+                    <div class="nv-step">
+                        <div class="nv-step-number">5</div>
+                        <h3 class="nv-step-title">Personal Guidance &amp; Support</h3>
+                        <p class="nv-step-desc">
+                            I provide 1:1 personal guidance through your first orders and remain available via call or 
+                            text throughout your subscription. Renew for another subscription fee after your plan ends to continue.
+                        </p>
+                        <div class="nv-step-highlight">
+                            <strong>Always Available:</strong> I'm available via Snapchat (synced22ps) 
+                            to answer questions and provide support throughout your subscription.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pricing Page -->
+        <div id="pricingPage" class="nv-page">
+            <div class="nv-page-content">
+                <h2 class="nv-page-title">Simple &amp; Transparent Pricing</h2>
+                <p style="color: #8E8E93; margin-bottom: 20px; text-align: center;">
+                    🎉 <strong>New Year Sale: Up to 40% OFF All Plans!</strong> Limited time offer.
+                </p>
+                <div class="nv-plan-group" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin-top: 30px;">
+                    <div class="nv-plan-item">
+                        <div class="nv-plan-title">Basic Plan</div>
+                        <div class="nv-plan-duration">3 Days Access</div>
+                        <div class="nv-plan-price">
+                            <span class="original-price">£300</span>
+                            <div class="sale-price">
+                                <span class="currency">£</span>200
+                                <span class="discount-badge">33% OFF</span>
+                            </div>
+                        </div>
+                        <ul class="nv-plan-features">
+                            <li><i class="fas fa-check"></i> 2 Apple Gift Cards per 3 days</li>
+                            <li><i class="fas fa-check"></i> £950 Per Card Value</li>
+                            <li><i class="fas fa-check"></i> Personal 1:1 Guidance</li>
+                            <li><i class="fas fa-check"></i> 24/7 Support</li>
+                            <li><i class="fas fa-check"></i> Full System Access</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nv-plan-item">
+                        <div class="nv-plan-title">Standard Plan</div>
+                        <div class="nv-plan-duration">7 Days Access</div>
+                        <div class="nv-plan-price">
+                            <span class="original-price">£500</span>
+                            <div class="sale-price">
+                                <span class="currency">£</span>350
+                                <span class="discount-badge">30% OFF</span>
+                            </div>
+                        </div>
+                        <ul class="nv-plan-features">
+                            <li><i class="fas fa-check"></i> 5 Apple Gift Cards Weekly</li>
+                            <li><i class="fas fa-check"></i> £950 Per Card Value</li>
+                            <li><i class="fas fa-check"></i> Personal 1:1 Guidance</li>
+                            <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
+                            <li><i class="fas fa-check"></i> Full System Access</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nv-plan-item" style="border-color: var(--synced-green);">
+                        <div class="nv-plan-badge">Most Popular</div>
+                        <div class="nv-plan-title">Pro Plan</div>
+                        <div class="nv-plan-duration">14 Days Access</div>
+                        <div class="nv-plan-price">
+                            <span class="original-price">£900</span>
+                            <div class="sale-price">
+                                <span class="currency">£</span>600
+                                <span class="discount-badge">33% OFF</span>
+                            </div>
+                        </div>
+                        <ul class="nv-plan-features">
+                            <li><i class="fas fa-check"></i> 12 Apple Gift Cards Bi-Weekly</li>
+                            <li><i class="fas fa-check"></i> £950 Per Card Value</li>
+                            <li><i class="fas fa-check"></i> Personal 1:1 Guidance</li>
+                            <li><i class="fas fa-check"></i> VIP Priority Support</li>
+                            <li><i class="fas fa-check"></i> Early Access Features</li>
+                            <li><i class="fas fa-check"></i> Full System Access</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nv-plan-item">
+                        <div class="nv-plan-title">Ultimate Plan</div>
+                        <div class="nv-plan-duration">30 Days Access</div>
+                        <div class="nv-plan-price">
+                            <span class="original-price">£4,000</span>
+                            <div class="sale-price">
+                                <span class="currency">£</span>2,500
+                                <span class="discount-badge">38% OFF</span>
+                            </div>
+                        </div>
+                        <ul class="nv-plan-features">
+                            <li><i class="fas fa-check"></i> 3 Apple Gift Cards Daily</li>
+                            <li><i class="fas fa-check"></i> £950 Per Card Value</li>
+                            <li><i class="fas fa-check"></i> Personal 1:1 Guidance</li>
+                            <li><i class="fas fa-check"></i> VIP Priority Support</li>
+                            <li><i class="fas fa-check"></i> Early Access Features</li>
+                            <li><i class="fas fa-check"></i> Full System Access</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="nv-summary" style="margin-top: 40px;">
+                    <h3 style="margin-bottom: 20px; color: white;">Key Points:</h3>
+                    <div class="nv-summary-item">
+                        <div class="nv-summary-label">Regular Price:</div>
+                        <div class="nv-summary-value">£300 - £4,000 (based on plan)</div>
+                    </div>
+                    <div class="nv-summary-item">
+                        <div class="nv-summary-label">Sale Price:</div>
+                        <div class="nv-summary-value">£200 - £2,500 (Up to 40% OFF!)</div>
+                    </div>
+                    <div class="nv-summary-item">
+                        <div class="nv-summary-label">Weekly Generation:</div>
+                        <div class="nv-summary-value">Up to 21 × £950 Apple Gift Cards</div>
+                    </div>
+                    <div class="nv-summary-item">
+                        <div class="nv-summary-label">Renewal Cost:</div>
+                        <div class="nv-summary-value">Same sale price after plan ends</div>
+                    </div>
+                    <div class="nv-summary-item">
+                        <div class="nv-summary-label">Personal Support:</div>
+                        <div class="nv-summary-value">1:1 guidance included</div>
+                    </div>
+                    <div class="nv-summary-item">
+                        <div class="nv-summary-label">Contact:</div>
+                        <div class="nv-summary-value">Snapchat for payments</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Page -->
+        <div id="contactPage" class="nv-page">
+            <div class="nv-page-content">
+                <h2 class="nv-page-title">Contact Me</h2>
+                <div class="nv-contact-grid">
+                    <div class="nv-contact-card">
+                        <div class="nv-contact-card-icon">
+                            <i class="fab fa-snapchat"></i>
+                        </div>
+                        <h3 class="nv-contact-card-title">Snapchat</h3>
+                        <p class="nv-contact-card-desc">
+                            For quick questions, updates, and payment instructions. I'm most active here and respond quickly.
+                            Send me a message to get started or for payment details.
+                        </p>
+                        <div class="nv-contact-card-value">synced22ps</div>
+                    </div>
+                    
+                    <div class="nv-contact-card">
+                        <div class="nv-contact-card-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3 class="nv-contact-card-title">WhatsApp</h3>
+                        <p class="nv-contact-card-desc">
+                            For detailed conversations, voice calls, and personal guidance. Currently not available.
+                            Please use Snapchat for all communications.
+                        </p>
+                        <div class="nv-contact-card-value">Currently N/A</div>
+                    </div>
+                </div>
+                
+                <div class="nv-step-highlight" style="margin-top: 40px; text-align: center;">
+                    <h3 style="margin-bottom: 10px; color: white;">Response Time &amp; Support</h3>
+                    <p style="color: #8E8E93;">
+                        I typically respond within minutes during UK business hours (9 AM - 10 PM GMT). 
+                        For urgent matters outside these hours, Snapchat is your best option. All payments are 
+                        processed manually through direct contact for security and verification.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="nv-footer">
+            <div class="nv-footer-links">
+                <a href="#" data-page="register">Register</a>
+                <a href="#" data-page="how-it-works">How It Works</a>
+                <a href="#" data-page="pricing">Pricing</a>
+                <a href="#" data-page="contact">Contact</a>
+            </div>
+            <p>© 2025 Synced2PS DGG System. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 12px; color: #8E8E93;">
+                This system provides access to Apple gift card generation. All Apple products are genuine and purchased through official channels.
+            </p>
+        </footer>
+    </div>
+    
+    <!-- Success Modal -->
+    <div class="nv-modal" id="successModal">
+        <div class="nv-modal-content">
+            <div class="nv-modal-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2 class="nv-modal-title">Registration Submitted!</h2>
+            <p class="nv-modal-text">
+                Thank you for registering with Synced2PS DGG System. Your application has been received.
+                Please contact me on Snapchat to complete your payment and get immediate access.
+            </p>
+            <div class="nv-modal-email" id="userEmail"></div>
+            <button class="nv-btn nv-btn-primary" id="closeModal">Return to Home</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const pages = document.querySelectorAll('.nv-page');
+            const navLinks = document.querySelectorAll('.nv-nav a');
+            const steps = document.querySelectorAll('.nv-form-step');
+            const progressSteps = document.querySelectorAll('.nv-progress-step');
+            const progressLine = document.getElementById('progressLine');
+            
+            // Step navigation buttons
+            const nextStep1Btn = document.getElementById('nextStep1');
+            const nextStep2Btn = document.getElementById('nextStep2');
+            const prevStep2Btn = document.getElementById('prevStep2');
+            const prevStep3Btn = document.getElementById('prevStep3');
+            const submitBtn = document.getElementById('submitRegistration');
+            
+            // Form inputs
+            const firstNameInput = document.getElementById('firstName');
+            const lastNameInput = document.getElementById('lastName');
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            const countryInput = document.getElementById('country');
+            const dateInput = document.getElementById('registrationDate');
+            const planItems = document.querySelectorAll('.nv-plan-item');
+            const cardValueInput = document.getElementById('cardValue');
+            const retailerInput = document.getElementById('retailer');
+            const selectedPlanDisplay = document.getElementById('selectedPlan');
+            const dailyCardsDisplay = document.getElementById('dailyCards');
+            const totalDueDisplay = document.getElementById('totalDue');
+            
+            // Payment
+            const paymentOptions = document.querySelectorAll('.nv-payment-option');
+            
+            // Modal
+            const successModal = document.getElementById('successModal');
+            const closeModalBtn = document.getElementById('closeModal');
+            const userEmailDisplay = document.getElementById('userEmail');
+            
+            // Current step and selected data
+            let currentStep = 1;
+            let selectedPlan = 'pro';
+            let selectedPlanPrice = 600;
+            let selectedPlanDuration = '14 Days';
+            
+            // Initialize date to today
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.value = today;
+            dateInput.min = today;
+            
+            // Page Navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page') + 'Page';
+                    
+                    // Update active nav link
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show selected page
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById(pageId).classList.add('active');
+                });
+            });
+            
+            // Update progress line
+            function updateProgress() {
+                const progressWidth = ((currentStep - 1) / 2) * 100;
+                progressLine.style.width = `${progressWidth}%`;
+                
+                // Update progress steps
+                progressSteps.forEach(step => {
+                    const stepNum = parseInt(step.getAttribute('data-step'));
+                    
+                    step.classList.remove('active', 'completed');
+                    
+                    if (stepNum < currentStep) {
+                        step.classList.add('completed');
+                    } else if (stepNum === currentStep) {
+                        step.classList.add('active');
+                    }
+                });
+            }
+            
+            // Navigate to step
+            function goToStep(step) {
+                // Hide all steps
+                steps.forEach(s => s.classList.remove('active'));
+                
+                // Show target step
+                document.getElementById(`step${step}`).classList.add('active');
+                
+                // Update current step
+                currentStep = step;
+                
+                // Update progress
+                updateProgress();
+            }
+            
+            // Validate step 1
+            function validateStep1() {
+                const requiredFields = [firstNameInput, lastNameInput, emailInput, phoneInput, countryInput];
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = '#FF3B30';
+                    } else {
+                        field.style.borderColor = '';
+                    }
+                });
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (emailInput.value && !emailRegex.test(emailInput.value)) {
+                    isValid = false;
+                    emailInput.style.borderColor = '#FF3B30';
+                }
+                
+                return isValid;
+            }
+            
+            // Validate step 2
+            function validateStep2() {
+                return selectedPlan !== null;
+            }
+            
+            // Validate step 3
+            function validateStep3() {
+                const paymentSelected = document.querySelector('.nv-payment-option.selected');
+                return !!paymentSelected;
+            }
+            
+            // Update summary based on selected plan
+            function updateSummary() {
+                // Update plan name
+                selectedPlanDisplay.textContent = `${selectedPlan.charAt(0).toUpperCase() + selectedPlan.slice(1)} (${selectedPlanDuration})`;
+                
+                // Update cards based on plan
+                let cardsText = '';
+                switch(selectedPlan) {
+                    case 'basic':
+                        cardsText = '2 × £950 Apple Cards (per 3 days)';
+                        break;
+                    case 'standard':
+                        cardsText = '5 × £950 Apple Cards (weekly)';
+                        break;
+                    case 'pro':
+                        cardsText = '12 × £950 Apple Cards (bi-weekly)';
+                        break;
+                    case 'ultimate':
+                        cardsText = '3 × £950 Apple Cards (daily)';
+                        break;
+                }
+                dailyCardsDisplay.textContent = cardsText;
+                
+                // Update total price
+                totalDueDisplay.textContent = `£${selectedPlanPrice.toFixed(2)}`;
+            }
+            
+            // Plan selection
+            planItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Update visual selection
+                    planItems.forEach(i => i.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    // Update selected plan
+                    selectedPlan = this.getAttribute('data-plan');
+                    selectedPlanPrice = parseInt(this.getAttribute('data-price'));
+                    selectedPlanDuration = this.getAttribute('data-duration');
+                    
+                    // Update summary
+                    updateSummary();
+                    
+                    // Enable next button
+                    nextStep2Btn.disabled = false;
+                });
+            });
+            
+            // Auto-select first plan
+            if (planItems.length > 0) {
+                // Find the selected plan or select the first one
+                const selectedItem = document.querySelector('.nv-plan-item.selected');
+                if (selectedItem) {
+                    selectedPlan = selectedItem.getAttribute('data-plan');
+                    selectedPlanPrice = parseInt(selectedItem.getAttribute('data-price'));
+                    selectedPlanDuration = selectedItem.getAttribute('data-duration');
+                    updateSummary();
+                }
+            }
+            
+            // Payment selection
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Update visual selection
+                    paymentOptions.forEach(o => o.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    // Enable submit button
+                    submitBtn.disabled = false;
+                });
+            });
+            
+            // Step navigation event listeners
+            nextStep1Btn.addEventListener('click', function() {
+                if (validateStep1()) {
+                    goToStep(2);
+                }
+            });
+            
+            nextStep2Btn.addEventListener('click', function() {
+                if (validateStep2()) {
+                    goToStep(3);
+                }
+            });
+            
+            prevStep2Btn.addEventListener('click', function() {
+                goToStep(1);
+            });
+            
+            prevStep3Btn.addEventListener('click', function() {
+                goToStep(2);
+            });
+            
+            // Form submission
+            submitBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (validateStep3()) {
+                    // Show loading state
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                    this.disabled = true;
+                    
+                    // Simulate processing
+                    setTimeout(() => {
+                        userEmailDisplay.textContent = emailInput.value || 'Your registration email';
+                        successModal.classList.add('active');
+                        
+                        // Log registration data
+                        console.log('Registration submitted:', {
+                            name: `${firstNameInput.value} ${lastNameInput.value}`,
+                            email: emailInput.value,
+                            phone: phoneInput.value,
+                            country: countryInput.value,
+                            plan: selectedPlan,
+                            duration: selectedPlanDuration,
+                            price: selectedPlanPrice,
+                            payment: document.querySelector('.nv-payment-option.selected').getAttribute('data-method')
+                        });
+                        
+                        // Reset button
+                        this.innerHTML = originalText;
+                        this.disabled = false;
+                    }, 1500);
+                }
+            });
+            
+            // Close modal
+            closeModalBtn.addEventListener('click', function() {
+                successModal.classList.remove('active');
+                // Return to register page
+                navLinks[0].click();
+            });
+            
+            // Real-time validation for step 1 fields
+            const step1Fields = [firstNameInput, lastNameInput, emailInput, phoneInput, countryInput];
+            step1Fields.forEach(field => {
+                field.addEventListener('input', function() {
+                    this.style.borderColor = '';
+                });
+            });
+            
+            // Initialize progress and summary
+            updateProgress();
+            updateSummary();
+        });
+    </script>
+
+</body></html>
