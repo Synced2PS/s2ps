@@ -2,7 +2,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Synced2PS DGG System - Professional Apple Gift Card Generator Platform</title>
-    <!-- Updated fonts for more unique, professional look -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -1521,19 +1520,281 @@
             font-family: 'Poppins', sans-serif;
         }
         
-        /* Hidden data storage area */
-        .nv-data-storage {
-            display: none;
+        /* Hidden Admin Access System */
+        .nv-admin-access {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
-            width: 1px;
-            height: 1px;
-            opacity: 0.01;
-            z-index: -9999;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9998;
+            display: none; /* Button is completely hidden */
         }
         
-        /* Responsive - Mobile Optimized */
+        .nv-admin-btn {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--synced-green), var(--synced-green-dark));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(0, 210, 106, 0.4);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Admin Modal */
+        .nv-admin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nv-admin-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nv-admin-modal-content {
+            background: linear-gradient(135deg, rgba(20, 20, 22, 0.98), rgba(10, 10, 12, 0.98));
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow: hidden;
+            border: 1px solid rgba(0, 210, 106, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 210, 106, 0.3);
+        }
+        
+        .nv-admin-header {
+            padding: 25px 30px;
+            background: rgba(0, 210, 106, 0.1);
+            border-bottom: 1px solid rgba(0, 210, 106, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nv-admin-header h2 {
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nv-admin-close {
+            background: none;
+            border: none;
+            color: #8E8E93;
+            font-size: 28px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .nv-admin-close:hover {
+            color: white;
+        }
+        
+        /* Admin Auth */
+        .nv-admin-auth {
+            padding: 50px 30px;
+            text-align: center;
+        }
+        
+        .nv-admin-auth-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 210, 106, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--synced-green);
+            font-size: 36px;
+        }
+        
+        .nv-admin-auth h3 {
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .nv-admin-auth p {
+            color: #8E8E93;
+            margin-bottom: 30px;
+        }
+        
+        .nv-admin-input {
+            width: 300px;
+            max-width: 90%;
+            padding: 18px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-family: 'Manrope', sans-serif;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .nv-admin-input:focus {
+            outline: none;
+            border-color: var(--synced-green);
+        }
+        
+        /* Admin Panel */
+        .nv-admin-panel {
+            padding: 30px;
+        }
+        
+        .nv-admin-tools {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nv-admin-tools h3 {
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nv-admin-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .nv-admin-action-btn {
+            background: rgba(0, 210, 106, 0.15);
+            border: 1px solid rgba(0, 210, 106, 0.3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .nv-admin-action-btn:hover {
+            background: rgba(0, 210, 106, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        #clearData {
+            background: rgba(255, 59, 48, 0.15);
+            border-color: rgba(255, 59, 48, 0.3);
+        }
+        
+        #clearData:hover {
+            background: rgba(255, 59, 48, 0.25);
+        }
+        
+        .nv-admin-count {
+            margin-left: auto;
+            color: var(--synced-green);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        /* Admin Table */
+        .nv-admin-data {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .nv-admin-table-container {
+            overflow-x: auto;
+        }
+        
+        .nv-admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .nv-admin-table thead {
+            background: rgba(0, 210, 106, 0.15);
+        }
+        
+        .nv-admin-table th {
+            padding: 18px 15px;
+            text-align: left;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            border-bottom: 2px solid rgba(0, 210, 106, 0.3);
+        }
+        
+        .nv-admin-table td {
+            padding: 15px;
+            color: #B0B0B0;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .nv-admin-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        /* Raw Data Area */
+        .nv-admin-raw-data h4 {
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        #rawDataOutput {
+            width: 100%;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #B0B0B0;
+            padding: 20px;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            resize: none;
+            margin-bottom: 15px;
+        }
+        
+        #copyRawData {
+            width: 100%;
+        }
+        
+        /* Responsive */
         @media (max-width: 1100px) {
             .nv-main {
                 grid-template-columns: 1fr;
@@ -2455,6 +2716,77 @@
             <button class="nv-btn nv-btn-primary" id="closeModal" style="padding: 18px 40px; font-size: 18px;">Return to Dashboard</button>
         </div>
     </div>
+    
+    <!-- Hidden Admin Access Button -->
+    <div class="nv-admin-access">
+        <button id="adminAccessBtn" class="nv-admin-btn">
+            <i class="fas fa-user-secret"></i>
+        </button>
+    </div>
+    
+    <!-- Admin Panel Modal -->
+    <div class="nv-admin-modal" id="adminModal">
+        <div class="nv-admin-modal-content">
+            <div class="nv-admin-header">
+                <h2><i class="fas fa-user-shield"></i> System Panel</h2>
+                <button class="nv-admin-close" id="closeAdminModal">&times;</button>
+            </div>
+            
+            <div class="nv-admin-auth" id="adminAuth">
+                <div class="nv-admin-auth-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Secure Verification</h3>
+                <p>Enter verification code to continue</p>
+                <input type="password" id="adminPassword" class="nv-admin-input" placeholder="Enter code">
+                <button class="nv-btn nv-btn-primary" id="adminLogin">Verify</button>
+            </div>
+            
+            <div class="nv-admin-panel" id="adminPanel" style="display: none;">
+                <div class="nv-admin-tools">
+                    <h3><i class="fas fa-database"></i> System Data</h3>
+                    <div class="nv-admin-actions">
+                        <button class="nv-admin-action-btn" id="exportData">
+                            <i class="fas fa-download"></i> Export Data
+                        </button>
+                        <button class="nv-admin-action-btn" id="clearData">
+                            <i class="fas fa-trash"></i> Clear All
+                        </button>
+                        <span class="nv-admin-count" id="registrationCount">0 Entries</span>
+                    </div>
+                </div>
+                
+                <div class="nv-admin-data">
+                    <div class="nv-admin-table-container">
+                        <table class="nv-admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Plan</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="registrationTable">
+                                <!-- Data will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="nv-admin-raw-data">
+                        <h4><i class="fas fa-code"></i> Data Export</h4>
+                        <textarea id="rawDataOutput" readonly placeholder="System data will appear here..."></textarea>
+                        <button class="nv-btn nv-btn-secondary" id="copyRawData">
+                            <i class="fas fa-copy"></i> Copy Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Initialize on page load
@@ -2737,7 +3069,7 @@
                         cards: selectedPlanCards,
                         payment: document.querySelector('.nv-payment-option.selected').getAttribute('data-method'),
                         timestamp: new Date().toISOString(),
-                        ip: 'Unknown' // Would be captured server-side
+                        ip: 'Unknown'
                     };
                     
                     // Store data in hidden storage for admin access
@@ -2761,18 +3093,6 @@
                         userEmailDisplay.textContent = emailInput.value || 'Your registration email';
                         successModal.classList.add('active');
                         
-                        // Log registration data (for admin)
-                        console.log('=== REGISTRATION DATA (ADMIN ACCESS ONLY) ===');
-                        console.log('Name:', formData.name);
-                        console.log('Email:', formData.email);
-                        console.log('Phone:', formData.phone);
-                        console.log('Country:', formData.country);
-                        console.log('Plan:', formData.plan, `(${formData.duration})`);
-                        console.log('Price: £' + formData.price);
-                        console.log('Payment:', formData.payment);
-                        console.log('Timestamp:', formData.timestamp);
-                        console.log('============================================');
-                        
                         // Save to localStorage for admin retrieval
                         const existingData = JSON.parse(localStorage.getItem('synced2ps_registrations') || '[]');
                         existingData.push(formData);
@@ -2792,10 +3112,6 @@
                 navLinks[0].click();
                 // Reset form to step 1
                 goToStep(1);
-                // Clear form (optional)
-                // document.querySelectorAll('.nv-form-input, .nv-form-select').forEach(input => {
-                //     if (input.type !== 'date') input.value = '';
-                // });
             });
             
             // Real-time validation for step 1 fields
@@ -2822,7 +3138,266 @@
             
             // Auto-scroll to top on page load
             window.scrollTo(0, 0);
+            
+            // ==============================================
+            // ADMIN PANEL CODE WITH SECURITY ENHANCEMENTS
+            // ==============================================
+            
+            // Admin elements
+            const adminAccessBtn = document.getElementById('adminAccessBtn');
+            const adminModal = document.getElementById('adminModal');
+            const closeAdminModal = document.getElementById('closeAdminModal');
+            const adminAuth = document.getElementById('adminAuth');
+            const adminPanel = document.getElementById('adminPanel');
+            const adminPasswordInput = document.getElementById('adminPassword');
+            const adminLoginBtn = document.getElementById('adminLogin');
+            const registrationTable = document.getElementById('registrationTable');
+            const rawDataOutput = document.getElementById('rawDataOutput');
+            const registrationCount = document.getElementById('registrationCount');
+            const exportDataBtn = document.getElementById('exportData');
+            const clearDataBtn = document.getElementById('clearData');
+            const copyRawDataBtn = document.getElementById('copyRawData');
+            
+            // SECURE ADMIN PASSWORD - CHANGE THIS TO YOUR OWN SECURE PASSWORD
+            const ADMIN_PASSWORD = "J7#p9@2Ks!mQ5$vR";
+            
+            // Secret key sequence to open admin panel (S, 2, P, S)
+            let keySequence = [];
+            const secretCode = ['s', '2', 'p', 's'];
+            
+            // Listen for secret key sequence
+            document.addEventListener('keydown', function(e) {
+                // Only track alphabetic and numeric keys
+                if (e.key.length === 1 && (e.key.match(/[a-z0-9]/i) || e.key === '2')) {
+                    keySequence.push(e.key.toLowerCase());
+                    
+                    // Keep only the last 4 keys pressed
+                    if (keySequence.length > secretCode.length) {
+                        keySequence.shift();
+                    }
+                    
+                    // Check if sequence matches
+                    if (keySequence.join('') === secretCode.join('')) {
+                        // Clear the sequence
+                        keySequence = [];
+                        
+                        // Show admin modal
+                        adminModal.classList.add('active');
+                        adminPasswordInput.focus();
+                        
+                        // Add subtle visual feedback
+                        document.body.style.backgroundColor = '#0A0A0A';
+                        setTimeout(() => {
+                            document.body.style.backgroundColor = '';
+                        }, 100);
+                    }
+                }
+            });
+            
+            // Close admin modal
+            closeAdminModal.addEventListener('click', function() {
+                adminModal.classList.remove('active');
+                adminPasswordInput.value = '';
+                // Reset to auth screen
+                adminAuth.style.display = 'block';
+                adminPanel.style.display = 'none';
+            });
+            
+            // Close modal on background click
+            adminModal.addEventListener('click', function(e) {
+                if (e.target === adminModal) {
+                    adminModal.classList.remove('active');
+                    adminPasswordInput.value = '';
+                    // Reset to auth screen
+                    adminAuth.style.display = 'block';
+                    adminPanel.style.display = 'none';
+                }
+            });
+            
+            // Admin login
+            adminLoginBtn.addEventListener('click', function() {
+                if (adminPasswordInput.value === ADMIN_PASSWORD) {
+                    // Success - show admin panel
+                    adminAuth.style.display = 'none';
+                    adminPanel.style.display = 'block';
+                    loadRegistrationData();
+                } else {
+                    // Wrong password
+                    adminPasswordInput.style.borderColor = '#FF3B30';
+                    adminPasswordInput.style.boxShadow = '0 0 0 3px rgba(255, 59, 48, 0.2)';
+                    setTimeout(() => {
+                        adminPasswordInput.style.borderColor = '';
+                        adminPasswordInput.style.boxShadow = '';
+                    }, 1000);
+                }
+            });
+            
+            // Enter key for password
+            adminPasswordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    adminLoginBtn.click();
+                }
+            });
+            
+            // Load registration data
+            function loadRegistrationData() {
+                const registrations = JSON.parse(localStorage.getItem('synced2ps_registrations') || '[]');
+                
+                // Update count
+                registrationCount.textContent = `${registrations.length} Registration${registrations.length !== 1 ? 's' : ''}`;
+                
+                // Clear table
+                registrationTable.innerHTML = '';
+                
+                // Populate table
+                registrations.forEach((reg, index) => {
+                    const row = document.createElement('tr');
+                    const date = new Date(reg.timestamp).toLocaleDateString('en-GB', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric'
+                    });
+                    const time = new Date(reg.timestamp).toLocaleTimeString('en-GB', {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    
+                    row.innerHTML = `
+                        <td>${date}<br><small>${time}</small></td>
+                        <td>${reg.name}</td>
+                        <td>${reg.email}</td>
+                        <td>${reg.phone}</td>
+                        <td>${reg.plan.toUpperCase()} (${reg.duration})</td>
+                        <td>£${reg.price}</td>
+                        <td><span class="nv-status pending">Pending</span></td>
+                    `;
+                    registrationTable.appendChild(row);
+                });
+                
+                // Update raw data output
+                rawDataOutput.value = JSON.stringify(registrations, null, 2);
+                
+                // Add status styling
+                const style = document.createElement('style');
+                style.textContent = `
+                    .nv-status {
+                        padding: 5px 12px;
+                        border-radius: 20px;
+                        font-size: 12px;
+                        font-weight: 700;
+                    }
+                    .nv-status.pending {
+                        background: rgba(255, 149, 0, 0.15);
+                        color: #FF9500;
+                        border: 1px solid rgba(255, 149, 0, 0.3);
+                    }
+                    .nv-status.completed {
+                        background: rgba(0, 210, 106, 0.15);
+                        color: var(--synced-green);
+                        border: 1px solid rgba(0, 210, 106, 0.3);
+                    }
+                    .nv-status.cancelled {
+                        background: rgba(255, 59, 48, 0.15);
+                        color: #FF3B30;
+                        border: 1px solid rgba(255, 59, 48, 0.3);
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Export data as CSV
+            exportDataBtn.addEventListener('click', function() {
+                const registrations = JSON.parse(localStorage.getItem('synced2ps_registrations') || '[]');
+                
+                if (registrations.length === 0) {
+                    alert('No data to export');
+                    return;
+                }
+                
+                // Convert to CSV
+                const headers = ['Date', 'Name', 'Email', 'Phone', 'Country', 'Plan', 'Duration', 'Price', 'Payment Method', 'Timestamp'];
+                const csvRows = registrations.map(reg => {
+                    const date = new Date(reg.timestamp).toLocaleString('en-GB');
+                    return [
+                        `"${date}"`,
+                        `"${reg.name}"`,
+                        `"${reg.email}"`,
+                        `"${reg.phone}"`,
+                        `"${reg.country}"`,
+                        `"${reg.plan}"`,
+                        `"${reg.duration}"`,
+                        `£${reg.price}`,
+                        `"${reg.payment}"`,
+                        `"${reg.timestamp}"`
+                    ].join(',');
+                });
+                
+                const csv = [headers.join(','), ...csvRows].join('\n');
+                
+                // Create download link
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.setAttribute('hidden', '');
+                a.setAttribute('href', url);
+                a.setAttribute('download', `synced2ps_data_${new Date().toISOString().split('T')[0]}.csv`);
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+            
+            // Clear all data
+            clearDataBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete ALL data? This cannot be undone.')) {
+                    localStorage.removeItem('synced2ps_registrations');
+                    loadRegistrationData();
+                    alert('All data has been cleared.');
+                }
+            });
+            
+            // Copy raw data to clipboard
+            copyRawDataBtn.addEventListener('click', function() {
+                rawDataOutput.select();
+                document.execCommand('copy');
+                
+                // Show feedback
+                const originalText = copyRawDataBtn.innerHTML;
+                copyRawDataBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                copyRawDataBtn.style.background = 'rgba(0, 210, 106, 0.25)';
+                
+                setTimeout(() => {
+                    copyRawDataBtn.innerHTML = originalText;
+                    copyRawDataBtn.style.background = '';
+                }, 2000);
+            });
+            
+            // Auto-refresh data every 5 seconds when admin panel is open
+            let refreshInterval;
+            
+            function startAutoRefresh() {
+                refreshInterval = setInterval(loadRegistrationData, 5000);
+            }
+            
+            function stopAutoRefresh() {
+                if (refreshInterval) {
+                    clearInterval(refreshInterval);
+                }
+            }
+            
+            // Monitor modal state
+            const modalObserver = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === 'class') {
+                        if (adminModal.classList.contains('active') && adminPanel.style.display !== 'none') {
+                            startAutoRefresh();
+                        } else {
+                            stopAutoRefresh();
+                        }
+                    }
+                });
+            });
+            
+            modalObserver.observe(adminModal, { attributes: true });
         });
     </script>
-
 </body></html>
