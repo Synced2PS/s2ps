@@ -2,7 +2,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Synced2PS DGG System - Professional Apple Gift Card Generator Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <!-- Updated fonts for more unique, professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -12,8 +13,10 @@
             --synced-card: #1C1C1E;
             --synced-border: #38383A;
             --synced-success: #00D26A;
-            --synced-glow: 0 10px 40px rgba(0, 210, 106, 0.2);
-            --synced-glow-intense: 0 0 30px rgba(0, 210, 106, 0.4);
+            --synced-gold: #FFD700;
+            --synced-blue: #007AFF;
+            --synced-glow: 0 10px 40px rgba(0, 210, 106, 0.3);
+            --synced-glow-intense: 0 0 40px rgba(0, 210, 106, 0.5);
         }
         
         * {
@@ -23,7 +26,7 @@
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(135deg, #000000 0%, #0F0F0F 100%);
             color: #FFFFFF;
             min-height: 100vh;
@@ -52,6 +55,57 @@
             padding: 20px;
         }
         
+        /* Sale Banner at the TOP */
+        .nv-sale-banner {
+            background: linear-gradient(90deg, #FF3B30, #FF9500, #FF3B30);
+            background-size: 200% 200%;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            font-weight: 900;
+            font-size: 20px;
+            animation: gradient 3s ease infinite, pulse 2s infinite;
+            box-shadow: 0 6px 25px rgba(255, 59, 48, 0.4);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .nv-sale-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 4s infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .nv-sale-banner span {
+            background: white;
+            color: #FF3B30;
+            padding: 6px 18px;
+            border-radius: 25px;
+            margin: 0 10px;
+            font-weight: 900;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 18px;
+        }
+        
         /* Header - Professional Look */
         .nv-header {
             display: flex;
@@ -60,6 +114,7 @@
             padding: 25px 0;
             border-bottom: 1px solid rgba(0, 210, 106, 0.2);
             position: relative;
+            margin-bottom: 30px;
         }
         
         .nv-header::after {
@@ -75,24 +130,26 @@
         .nv-brand {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 20px;
         }
         
         .nv-logo {
-            width: 52px;
-            height: 52px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--synced-green), var(--synced-green-dark));
-            border-radius: 12px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 800;
-            font-size: 22px;
+            font-weight: 900;
+            font-size: 28px;
             color: white;
             box-shadow: var(--synced-glow-intense);
             flex-shrink: 0;
             position: relative;
             overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -1px;
         }
         
         .nv-logo::before {
@@ -117,28 +174,32 @@
         }
         
         .nv-title {
-            font-size: 26px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #FFFFFF, var(--synced-green));
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFFFFF, var(--synced-green), var(--synced-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            line-height: 1.2;
+            line-height: 1.1;
             letter-spacing: -0.5px;
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 0 0 30px rgba(0, 210, 106, 0.3);
         }
         
         .nv-subtitle {
-            font-size: 14px;
+            font-size: 16px;
             color: #8E8E93;
-            margin-top: 4px;
+            margin-top: 6px;
             line-height: 1.3;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
+            font-weight: 500;
         }
         
         .nv-nav {
             display: flex;
-            gap: 35px;
-            font-size: 16px;
+            gap: 40px;
+            font-size: 17px;
             font-weight: 600;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-nav a {
@@ -152,6 +213,7 @@
         
         .nv-nav a:hover {
             color: white;
+            transform: translateY(-2px);
         }
         
         .nv-nav a.active {
@@ -164,83 +226,96 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 2px;
+            height: 3px;
             background: linear-gradient(90deg, var(--synced-green), var(--synced-green-dark));
-            border-radius: 2px;
-            box-shadow: 0 0 10px rgba(0, 210, 106, 0.5);
+            border-radius: 3px;
+            box-shadow: 0 0 15px rgba(0, 210, 106, 0.6);
         }
         
-        /* Trust Badges */
+        /* Main heading section with trust badges */
+        .nv-hero-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .nv-main-heading {
+            font-size: 52px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFFFFF, var(--synced-green), var(--synced-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 0 0 40px rgba(0, 210, 106, 0.4);
+        }
+        
+        .nv-sub-heading {
+            font-size: 22px;
+            color: #B0B0B0;
+            margin-bottom: 40px;
+            font-weight: 500;
+            line-height: 1.5;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Trust Badges - Updated styling */
         .nv-trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px 0;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
         
         .nv-trust-badge {
             display: flex;
             align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 12px 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 210, 106, 0.2);
+            gap: 18px;
+            background: linear-gradient(135deg, rgba(28, 28, 30, 0.8), rgba(20, 20, 22, 0.8));
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 210, 106, 0.3);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nv-trust-badge:hover {
+            transform: translateY(-5px);
+            border-color: var(--synced-green);
+            box-shadow: var(--synced-glow);
         }
         
         .nv-trust-badge i {
             color: var(--synced-green);
-            font-size: 18px;
+            font-size: 28px;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 210, 106, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 210, 106, 0.2);
         }
         
-        .nv-trust-badge span {
-            font-size: 14px;
-            font-weight: 600;
+        .nv-trust-badge-content {
+            flex: 1;
         }
         
-        /* Sale Banner - More Professional */
-        .nv-sale-banner {
-            background: linear-gradient(90deg, #FF3B30, #FF9500, #FF3B30);
-            background-size: 200% 200%;
-            color: white;
-            text-align: center;
-            padding: 18px;
-            margin: 25px 0;
-            border-radius: 12px;
+        .nv-trust-badge-title {
             font-weight: 800;
-            font-size: 20px;
-            animation: gradient 3s ease infinite, pulse 2s infinite;
-            box-shadow: 0 6px 25px rgba(255, 59, 48, 0.4);
-            position: relative;
-            overflow: hidden;
+            font-size: 18px;
+            color: white;
+            margin-bottom: 5px;
+            font-family: 'Poppins', sans-serif;
         }
         
-        .nv-sale-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            animation: shine 4s infinite;
-        }
-        
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .nv-sale-banner span {
-            background: white;
-            color: #FF3B30;
-            padding: 4px 12px;
-            border-radius: 25px;
-            margin: 0 8px;
-            font-weight: 900;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        .nv-trust-badge-desc {
+            color: #8E8E93;
+            font-size: 14px;
+            line-height: 1.4;
         }
         
         /* Main Content */
@@ -254,7 +329,7 @@
         /* Info Panel - Enhanced */
         .nv-info-panel {
             background: linear-gradient(135deg, rgba(28, 28, 30, 0.95), rgba(20, 20, 22, 0.95));
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 45px;
             border: 1px solid rgba(0, 210, 106, 0.3);
             backdrop-filter: blur(20px);
@@ -269,18 +344,19 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, var(--synced-green), var(--synced-green-dark));
         }
         
         .nv-info-title {
             font-size: 36px;
-            font-weight: 800;
+            font-weight: 900;
             margin-bottom: 20px;
             background: linear-gradient(135deg, white, var(--synced-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.2;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-info-subtitle {
@@ -288,6 +364,7 @@
             color: #B0B0B0;
             line-height: 1.7;
             margin-bottom: 35px;
+            font-weight: 500;
         }
         
         .nv-features {
@@ -301,44 +378,46 @@
             display: flex;
             align-items: flex-start;
             gap: 20px;
-            padding: 20px;
+            padding: 25px;
             background: rgba(10, 10, 10, 0.5);
-            border-radius: 16px;
+            border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s;
         }
         
         .nv-feature:hover {
             border-color: rgba(0, 210, 106, 0.3);
-            transform: translateY(-2px);
+            transform: translateY(-5px);
             box-shadow: var(--synced-glow);
         }
         
         .nv-feature-icon {
-            width: 56px;
-            height: 56px;
+            width: 60px;
+            height: 60px;
             background: rgba(0, 210, 106, 0.15);
-            border-radius: 14px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--synced-green);
-            font-size: 24px;
+            font-size: 26px;
             flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(0, 210, 106, 0.2);
+            box-shadow: 0 6px 20px rgba(0, 210, 106, 0.2);
         }
         
         .nv-feature-text h4 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 10px;
             color: white;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-feature-text p {
-            font-size: 15px;
+            font-size: 16px;
             color: #B0B0B0;
             line-height: 1.6;
+            font-weight: 500;
         }
         
         /* Testimonials Section */
@@ -347,15 +426,16 @@
         }
         
         .nv-testimonials-title {
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: 900;
             margin-bottom: 25px;
             color: white;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-testimonials-title i {
@@ -364,15 +444,15 @@
         
         .nv-testimonial-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
             margin-top: 20px;
         }
         
         .nv-testimonial-card {
             background: rgba(10, 10, 10, 0.7);
-            border-radius: 16px;
-            padding: 25px;
+            border-radius: 20px;
+            padding: 30px;
             border: 1px solid rgba(0, 210, 106, 0.2);
             position: relative;
             transition: all 0.3s;
@@ -380,7 +460,7 @@
         
         .nv-testimonial-card:hover {
             border-color: var(--synced-green);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
             box-shadow: var(--synced-glow);
         }
         
@@ -389,7 +469,7 @@
             position: absolute;
             top: 15px;
             left: 20px;
-            font-size: 60px;
+            font-size: 70px;
             color: var(--synced-green);
             opacity: 0.2;
             font-family: serif;
@@ -398,61 +478,64 @@
         
         .nv-testimonial-text {
             color: #E0E0E0;
-            font-size: 15px;
+            font-size: 16px;
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-style: italic;
             position: relative;
             z-index: 1;
+            font-weight: 500;
         }
         
         .nv-testimonial-author {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 15px;
+            padding-top: 20px;
         }
         
         .nv-testimonial-avatar {
-            width: 45px;
-            height: 45px;
+            width: 55px;
+            height: 55px;
             background: linear-gradient(135deg, var(--synced-green), var(--synced-green-dark));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: 700;
-            font-size: 18px;
+            font-weight: 900;
+            font-size: 20px;
         }
         
         .nv-testimonial-info h5 {
-            font-size: 16px;
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: 800;
             color: white;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-testimonial-info p {
-            font-size: 13px;
+            font-size: 14px;
             color: #8E8E93;
+            font-weight: 500;
         }
         
         .nv-testimonial-verified {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
             color: var(--synced-green);
-            font-size: 12px;
-            font-weight: 600;
-            margin-top: 5px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-top: 8px;
         }
         
         .nv-stats {
             background: rgba(10, 10, 10, 0.7);
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 25px;
+            padding: 35px;
             border: 1px solid var(--synced-border);
             margin-top: 30px;
             position: relative;
@@ -465,18 +548,19 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, var(--synced-green), var(--synced-green-dark));
         }
         
         .nv-stats-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 30px;
             color: white;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-stats-title i {
@@ -486,43 +570,44 @@
         .nv-stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 25px;
         }
         
         .nv-stat-item {
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
+            border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s;
         }
         
         .nv-stat-item:hover {
             border-color: rgba(0, 210, 106, 0.3);
-            transform: translateY(-2px);
+            transform: translateY(-5px);
         }
         
         .nv-stat-number {
-            font-size: 32px;
-            font-weight: 800;
+            font-size: 36px;
+            font-weight: 900;
             color: var(--synced-green);
-            margin-bottom: 8px;
-            text-shadow: 0 0 10px rgba(0, 210, 106, 0.3);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 210, 106, 0.4);
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-stat-label {
-            font-size: 13px;
+            font-size: 14px;
             color: #8E8E93;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
+            letter-spacing: 1.5px;
+            font-weight: 700;
         }
         
         /* Form Panel - Enhanced */
         .nv-form-panel {
             background: linear-gradient(135deg, rgba(28, 28, 30, 0.95), rgba(20, 20, 22, 0.95));
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 45px;
             border: 1px solid rgba(0, 210, 106, 0.3);
             backdrop-filter: blur(20px);
@@ -537,7 +622,7 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, var(--synced-green), var(--synced-green-dark));
         }
         
@@ -548,15 +633,17 @@
         
         .nv-form-title {
             font-size: 36px;
-            font-weight: 800;
+            font-weight: 900;
             margin-bottom: 15px;
             color: white;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-form-subtitle {
             font-size: 18px;
             color: #B0B0B0;
             line-height: 1.5;
+            font-weight: 500;
         }
         
         /* Progress Bar - Enhanced */
@@ -570,25 +657,25 @@
         .nv-progress::before {
             content: '';
             position: absolute;
-            top: 20px;
+            top: 25px;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 6px;
             background: rgba(255, 255, 255, 0.1);
             z-index: 1;
-            border-radius: 2px;
+            border-radius: 3px;
         }
         
         .nv-progress-line {
             position: absolute;
-            top: 20px;
+            top: 25px;
             left: 0;
-            height: 4px;
+            height: 6px;
             background: linear-gradient(90deg, var(--synced-green), var(--synced-green-dark));
             z-index: 2;
             transition: width 0.5s ease;
-            border-radius: 2px;
-            box-shadow: 0 0 10px rgba(0, 210, 106, 0.5);
+            border-radius: 3px;
+            box-shadow: 0 0 15px rgba(0, 210, 106, 0.6);
         }
         
         .nv-progress-step {
@@ -600,26 +687,27 @@
         }
         
         .nv-progress-circle {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: var(--synced-card);
-            border: 3px solid rgba(255, 255, 255, 0.1);
+            border: 4px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: 900;
             color: #8E8E93;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-progress-step.active .nv-progress-circle {
             background: var(--synced-green);
             border-color: var(--synced-green);
             color: white;
-            box-shadow: 0 0 20px rgba(0, 210, 106, 0.5);
+            box-shadow: 0 0 25px rgba(0, 210, 106, 0.7);
         }
         
         .nv-progress-step.completed .nv-progress-circle {
@@ -629,11 +717,12 @@
         }
         
         .nv-progress-label {
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 700;
             color: #8E8E93;
             text-align: center;
             transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-progress-step.active .nv-progress-label {
@@ -656,39 +745,41 @@
         }
         
         .nv-step-title {
-            font-size: 22px;
-            font-weight: 700;
+            font-size: 26px;
+            font-weight: 900;
             margin-bottom: 30px;
             color: white;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-step-title span {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             background: rgba(0, 210, 106, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 18px;
             color: var(--synced-green);
-            font-weight: 800;
-            box-shadow: 0 4px 10px rgba(0, 210, 106, 0.2);
+            font-weight: 900;
+            box-shadow: 0 4px 15px rgba(0, 210, 106, 0.3);
         }
         
         .nv-form-group {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         
         .nv-form-label {
             display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
+            margin-bottom: 12px;
+            font-weight: 700;
             color: #E2E8F0;
-            font-size: 16px;
+            font-size: 17px;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-form-label .required {
@@ -697,50 +788,51 @@
         
         .nv-form-input, .nv-form-select {
             width: 100%;
-            padding: 18px 22px;
+            padding: 20px 25px;
             background: rgba(10, 10, 10, 0.7);
             border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            border-radius: 16px;
             color: white;
-            font-size: 16px;
-            font-family: 'Inter', sans-serif;
+            font-size: 17px;
+            font-family: 'Manrope', sans-serif;
             transition: all 0.3s;
+            font-weight: 500;
         }
         
         .nv-form-input:focus, .nv-form-select:focus {
             outline: none;
             border-color: var(--synced-green);
-            box-shadow: 0 0 0 4px rgba(0, 210, 106, 0.2);
+            box-shadow: 0 0 0 5px rgba(0, 210, 106, 0.2);
             background: rgba(10, 10, 10, 0.9);
         }
         
         .nv-form-select {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%238E8E93' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238E8E93' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 22px center;
-            background-size: 20px;
+            background-position: right 25px center;
+            background-size: 24px;
         }
         
         .nv-form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
+            gap: 30px;
         }
         
         /* Plan Selection - Enhanced */
         .nv-plan-group {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
             margin-top: 15px;
         }
         
         .nv-plan-item {
             background: linear-gradient(135deg, rgba(10, 10, 10, 0.7), rgba(15, 15, 15, 0.7));
             border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 25px;
+            border-radius: 20px;
+            padding: 30px;
             cursor: pointer;
             transition: all 0.3s;
             position: relative;
@@ -749,7 +841,7 @@
         
         .nv-plan-item:hover {
             border-color: var(--synced-green);
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             box-shadow: var(--synced-glow-intense);
         }
         
@@ -765,98 +857,103 @@
             right: 15px;
             background: linear-gradient(90deg, var(--synced-green), var(--synced-green-dark));
             color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 800;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 900;
             z-index: 2;
-            box-shadow: 0 4px 15px rgba(0, 210, 106, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 210, 106, 0.4);
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-plan-title {
-            font-size: 20px;
-            font-weight: 800;
+            font-size: 22px;
+            font-weight: 900;
             color: white;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-plan-duration {
             color: var(--synced-green);
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 15px;
-            font-size: 15px;
+            font-size: 16px;
         }
         
         .nv-plan-price {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 900;
             color: white;
-            margin: 20px 0;
+            margin: 25px 0;
             position: relative;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-plan-price .currency {
-            font-size: 18px;
+            font-size: 20px;
             color: #8E8E93;
             margin-right: 5px;
         }
         
         .nv-plan-price .original-price {
-            font-size: 18px;
+            font-size: 20px;
             color: #8E8E93;
             text-decoration: line-through;
             margin-right: 10px;
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
+            margin-bottom: 10px;
+            font-weight: 700;
         }
         
         .nv-plan-price .sale-price {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
         
         .nv-plan-price .discount-badge {
             background: linear-gradient(90deg, #FF3B30, #FF9500);
             color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 800;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 900;
             white-space: nowrap;
-            box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 59, 48, 0.4);
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-plan-features {
             list-style: none;
-            margin-top: 20px;
+            margin-top: 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 20px;
+            padding-top: 25px;
         }
         
         .nv-plan-features li {
             color: #B0B0B0;
-            font-size: 14px;
-            margin-bottom: 8px;
+            font-size: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-weight: 500;
         }
         
         .nv-plan-features li i {
             color: var(--synced-success);
-            font-size: 13px;
+            font-size: 14px;
         }
         
         /* Summary - Enhanced */
         .nv-summary {
             background: rgba(10, 10, 10, 0.7);
-            border-radius: 16px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 35px;
             border: 1px solid rgba(0, 210, 106, 0.2);
-            margin-top: 15px;
+            margin-top: 20px;
             position: relative;
         }
         
@@ -866,22 +963,23 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
+            height: 4px;
             background: linear-gradient(90deg, var(--synced-green), var(--synced-green-dark));
-            border-radius: 16px 16px 0 0;
+            border-radius: 20px 20px 0 0;
         }
         
         .nv-summary h4 {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: white;
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 20px;
+            font-weight: 900;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-summary-item {
             display: flex;
             justify-content: space-between;
-            padding: 15px 0;
+            padding: 18px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         
@@ -891,26 +989,29 @@
         
         .nv-summary-label {
             color: #8E8E93;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 16px;
         }
         
         .nv-summary-value {
-            font-weight: 700;
+            font-weight: 800;
             color: white;
             text-align: right;
+            font-size: 17px;
         }
         
         .nv-summary-total {
-            font-size: 22px;
+            font-size: 26px;
             color: var(--synced-success);
-            font-weight: 800;
-            text-shadow: 0 0 10px rgba(0, 210, 106, 0.3);
+            font-weight: 900;
+            text-shadow: 0 0 15px rgba(0, 210, 106, 0.4);
+            font-family: 'Poppins', sans-serif;
         }
         
         /* Payment Options - Enhanced */
         .nv-payment-options {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             margin-top: 15px;
         }
         
@@ -918,8 +1019,8 @@
             flex: 1;
             background: rgba(10, 10, 10, 0.7);
             border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 25px;
+            border-radius: 20px;
+            padding: 30px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
@@ -927,7 +1028,7 @@
         
         .nv-payment-option:hover {
             border-color: var(--synced-green);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
         
         .nv-payment-option.selected {
@@ -937,8 +1038,8 @@
         }
         
         .nv-payment-icon {
-            font-size: 42px;
-            margin-bottom: 15px;
+            font-size: 48px;
+            margin-bottom: 20px;
         }
         
         .nv-payment-card .nv-payment-icon {
@@ -950,23 +1051,25 @@
         }
         
         .nv-payment-title {
-            font-weight: 700;
-            margin-bottom: 8px;
+            font-weight: 900;
+            margin-bottom: 12px;
             color: white;
-            font-size: 18px;
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-payment-desc {
             color: #8E8E93;
-            font-size: 14px;
-            line-height: 1.4;
+            font-size: 15px;
+            line-height: 1.5;
+            font-weight: 500;
         }
         
         .nv-contact-info {
             background: linear-gradient(135deg, rgba(0, 210, 106, 0.15), rgba(10, 10, 10, 0.9));
-            border-radius: 16px;
-            padding: 25px;
-            margin-top: 25px;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
             border: 1px solid var(--synced-green);
             text-align: center;
             position: relative;
@@ -979,15 +1082,16 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
+            height: 4px;
             background: linear-gradient(90deg, var(--synced-green), var(--synced-green-dark));
         }
         
         .nv-contact-title {
-            font-weight: 700;
-            margin-bottom: 20px;
+            font-weight: 900;
+            margin-bottom: 25px;
             color: white;
-            font-size: 20px;
+            font-size: 24px;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-contact-items {
@@ -1000,24 +1104,24 @@
         .nv-contact-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 15px 25px;
+            gap: 20px;
+            padding: 20px 30px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
+            border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .nv-contact-icon {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: rgba(0, 210, 106, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--synced-green);
-            font-size: 22px;
-            box-shadow: 0 4px 15px rgba(0, 210, 106, 0.2);
+            font-size: 26px;
+            box-shadow: 0 6px 20px rgba(0, 210, 106, 0.2);
         }
         
         .nv-contact-text {
@@ -1025,15 +1129,16 @@
         }
         
         .nv-contact-label {
-            font-size: 13px;
+            font-size: 14px;
             color: #8E8E93;
-            font-weight: 600;
+            font-weight: 700;
         }
         
         .nv-contact-value {
-            font-weight: 800;
+            font-weight: 900;
             color: white;
-            font-size: 17px;
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
         }
         
         /* Form Footer - Enhanced */
@@ -1041,18 +1146,18 @@
             display: flex;
             justify-content: space-between;
             margin-top: 50px;
-            padding-top: 30px;
+            padding-top: 35px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .nv-btn {
-            padding: 18px 35px;
-            font-size: 17px;
-            font-weight: 700;
-            border-radius: 12px;
+            padding: 20px 40px;
+            font-size: 18px;
+            font-weight: 900;
+            border-radius: 16px;
             cursor: pointer;
             transition: all 0.3s;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             border: none;
             letter-spacing: 0.5px;
         }
@@ -1067,19 +1172,20 @@
             background: rgba(255, 255, 255, 0.1);
             color: white;
             border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
         }
         
         .nv-btn-primary {
             background: linear-gradient(135deg, var(--synced-green), var(--synced-green-dark));
             color: white;
-            box-shadow: 0 6px 25px rgba(0, 210, 106, 0.4);
-            font-weight: 800;
+            box-shadow: 0 8px 30px rgba(0, 210, 106, 0.5);
+            font-weight: 900;
         }
         
         .nv-btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 210, 106, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 210, 106, 0.7);
         }
         
         .nv-btn-primary:disabled {
@@ -1097,11 +1203,11 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 10000;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
         }
         
         .nv-modal.active {
@@ -1111,9 +1217,9 @@
         
         .nv-modal-content {
             background: linear-gradient(135deg, rgba(28, 28, 30, 0.95), rgba(20, 20, 22, 0.95));
-            border-radius: 24px;
+            border-radius: 28px;
             padding: 60px;
-            max-width: 550px;
+            max-width: 600px;
             width: 90%;
             text-align: center;
             border: 1px solid rgba(0, 210, 106, 0.3);
@@ -1128,57 +1234,60 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, var(--synced-green), var(--synced-green-dark));
         }
         
         .nv-modal-icon {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             background: rgba(0, 210, 106, 0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--synced-success);
-            font-size: 50px;
-            margin: 0 auto 30px;
-            box-shadow: 0 10px 30px rgba(0, 210, 106, 0.3);
+            font-size: 60px;
+            margin: 0 auto 35px;
+            box-shadow: 0 12px 35px rgba(0, 210, 106, 0.4);
         }
         
         .nv-modal-title {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 20px;
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 25px;
             color: white;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-modal-text {
             font-size: 18px;
             color: #B0B0B0;
             line-height: 1.6;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
+            font-weight: 500;
         }
         
         .nv-modal-email {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 20px;
-            font-weight: 700;
+            border-radius: 16px;
+            padding: 25px;
+            font-weight: 900;
             color: white;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 18px;
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
         }
         
         /* Footer - Enhanced */
         .nv-footer {
             margin-top: 80px;
-            padding-top: 40px;
+            padding-top: 50px;
             border-top: 1px solid rgba(0, 210, 106, 0.2);
             text-align: center;
             color: #8E8E93;
-            font-size: 15px;
+            font-size: 16px;
             position: relative;
         }
         
@@ -1195,8 +1304,8 @@
         .nv-footer-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-bottom: 25px;
+            gap: 40px;
+            margin-bottom: 30px;
             flex-wrap: wrap;
         }
         
@@ -1204,14 +1313,16 @@
             color: #8E8E93;
             text-decoration: none;
             transition: all 0.3s;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 8px;
+            font-weight: 800;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-footer-links a:hover {
             color: white;
             background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
         }
         
         /* Pages - Enhanced */
@@ -1226,8 +1337,8 @@
         
         .nv-page-content {
             background: linear-gradient(135deg, rgba(28, 28, 30, 0.95), rgba(20, 20, 22, 0.95));
-            border-radius: 24px;
-            padding: 50px;
+            border-radius: 28px;
+            padding: 60px;
             border: 1px solid rgba(0, 210, 106, 0.3);
             backdrop-filter: blur(20px);
             box-shadow: var(--synced-glow-intense);
@@ -1242,27 +1353,33 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, var(--synced-green), var(--synced-green-dark));
         }
         
         .nv-page-title {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 30px;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 40px;
             color: white;
             text-align: center;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #FFFFFF, var(--synced-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(0, 210, 106, 0.3);
         }
         
+        /* Enhanced How It Works Page */
         .nv-how-it-works {
             display: grid;
-            gap: 30px;
+            gap: 40px;
         }
         
         .nv-step {
             background: rgba(10, 10, 10, 0.7);
-            border-radius: 20px;
-            padding: 35px;
+            border-radius: 25px;
+            padding: 40px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s;
             position: relative;
@@ -1271,14 +1388,14 @@
         
         .nv-step:hover {
             border-color: rgba(0, 210, 106, 0.3);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
             box-shadow: var(--synced-glow);
         }
         
         .nv-step-number {
             display: inline-block;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--synced-green), var(--synced-green-dark));
             color: white;
             border-radius: 50%;
@@ -1286,42 +1403,58 @@
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            margin-bottom: 20px;
-            font-size: 22px;
-            box-shadow: 0 6px 20px rgba(0, 210, 106, 0.3);
+            margin-bottom: 25px;
+            font-size: 26px;
+            box-shadow: 0 8px 25px rgba(0, 210, 106, 0.4);
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-step-title {
-            font-size: 24px;
-            font-weight: 800;
-            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 25px;
             color: white;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-step-desc {
             color: #B0B0B0;
             line-height: 1.7;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 20px;
         }
         
         .nv-step-highlight {
             background: linear-gradient(135deg, rgba(0, 210, 106, 0.15), rgba(10, 10, 10, 0.9));
-            border-left: 4px solid var(--synced-green);
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 12px;
+            border-left: 5px solid var(--synced-green);
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 16px;
+        }
+        
+        .nv-step-highlight strong {
+            color: white;
+            font-weight: 800;
+        }
+        
+        .nv-step-highlight p {
+            color: #B0B0B0;
+            line-height: 1.7;
+            font-size: 16px;
+            margin-top: 10px;
         }
         
         .nv-contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
         }
         
         .nv-contact-card {
             background: rgba(10, 10, 10, 0.7);
-            border-radius: 20px;
-            padding: 35px;
+            border-radius: 25px;
+            padding: 40px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             text-align: center;
             transition: all 0.3s;
@@ -1331,7 +1464,7 @@
         
         .nv-contact-card:hover {
             border-color: rgba(0, 210, 106, 0.3);
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             box-shadow: var(--synced-glow-intense);
         }
         
@@ -1341,51 +1474,66 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, var(--synced-green), var(--synced-green-dark));
         }
         
         .nv-contact-card-icon {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background: rgba(0, 210, 106, 0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--synced-green);
-            font-size: 36px;
-            margin: 0 auto 25px;
-            box-shadow: 0 8px 25px rgba(0, 210, 106, 0.2);
+            font-size: 42px;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(0, 210, 106, 0.3);
         }
         
         .nv-contact-card-title {
-            font-size: 24px;
-            font-weight: 800;
-            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 25px;
             color: white;
+            font-family: 'Poppins', sans-serif;
         }
         
         .nv-contact-card-desc {
             color: #B0B0B0;
             line-height: 1.6;
-            margin-bottom: 25px;
-            font-size: 16px;
+            margin-bottom: 30px;
+            font-size: 17px;
+            font-weight: 500;
         }
         
         .nv-contact-card-value {
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 900;
             color: white;
             background: rgba(0, 210, 106, 0.15);
-            padding: 15px 30px;
-            border-radius: 12px;
+            padding: 20px 35px;
+            border-radius: 16px;
             display: inline-block;
             border: 1px solid rgba(0, 210, 106, 0.3);
-            box-shadow: 0 6px 20px rgba(0, 210, 106, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 210, 106, 0.2);
+            font-family: 'Poppins', sans-serif;
         }
         
-        /* Responsive */
+        /* Hidden data storage area */
+        .nv-data-storage {
+            display: none;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 1px;
+            height: 1px;
+            opacity: 0.01;
+            z-index: -9999;
+        }
+        
+        /* Responsive - Mobile Optimized */
         @media (max-width: 1100px) {
             .nv-main {
                 grid-template-columns: 1fr;
@@ -1399,25 +1547,70 @@
             .nv-plan-group {
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
+            
+            .nv-main-heading {
+                font-size: 44px;
+            }
         }
         
         @media (max-width: 768px) {
+            /* Mobile header fixes */
             .nv-header {
                 flex-direction: column;
                 gap: 25px;
-                text-align: center;
-                padding: 30px 0;
+                padding: 20px 0;
+                margin-bottom: 20px;
             }
             
             .nv-brand {
+                flex-direction: row;
                 justify-content: center;
                 text-align: center;
+                width: 100%;
+            }
+            
+            .nv-logo {
+                margin: 0;
+                width: 56px;
+                height: 56px;
+                font-size: 24px;
+            }
+            
+            .nv-title-wrapper {
+                align-items: center;
             }
             
             .nv-nav {
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 20px;
+                width: 100%;
+                font-size: 16px;
+            }
+            
+            .nv-main-heading {
+                font-size: 36px;
+                margin-bottom: 15px;
+            }
+            
+            .nv-sub-heading {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+            
+            .nv-trust-badges {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .nv-trust-badge {
+                padding: 20px;
+            }
+            
+            .nv-trust-badge i {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
             }
             
             .nv-payment-options {
@@ -1430,26 +1623,35 @@
             }
             
             .nv-title {
-                font-size: 24px;
+                font-size: 26px;
             }
             
             .nv-subtitle {
-                font-size: 13px;
+                font-size: 14px;
             }
             
             .nv-plan-price .sale-price {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 8px;
+                gap: 10px;
             }
             
-            .nv-trust-badges {
-                gap: 15px;
+            .nv-sale-banner {
+                font-size: 18px;
+                padding: 15px;
+                margin-bottom: 20px;
             }
             
-            .nv-trust-badge {
-                padding: 10px 15px;
-                font-size: 13px;
+            .nv-sale-banner span {
+                display: block;
+                margin: 10px auto;
+                width: fit-content;
+            }
+            
+            .nv-info-panel, 
+            .nv-form-panel,
+            .nv-page-content {
+                padding: 30px;
             }
         }
         
@@ -1459,17 +1661,22 @@
             }
             
             .nv-header {
-                padding: 20px 0;
+                padding: 15px 0;
+                gap: 20px;
             }
             
             .nv-logo {
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
             }
             
             .nv-title {
                 font-size: 22px;
+            }
+            
+            .nv-subtitle {
+                font-size: 13px;
             }
             
             .nv-nav {
@@ -1477,29 +1684,72 @@
                 gap: 15px;
             }
             
+            .nv-main-heading {
+                font-size: 32px;
+            }
+            
+            .nv-sub-heading {
+                font-size: 16px;
+            }
+            
             .nv-info-panel, 
             .nv-form-panel,
             .nv-page-content {
-                padding: 30px 20px;
+                padding: 25px 20px;
             }
             
             .nv-plan-price {
-                font-size: 24px;
+                font-size: 28px;
             }
             
             .nv-sale-banner {
-                font-size: 18px;
-                padding: 15px;
+                font-size: 16px;
+                padding: 12px;
+                line-height: 1.4;
+            }
+            
+            .nv-sale-banner span {
+                padding: 4px 12px;
+                font-size: 16px;
+                margin: 5px auto;
             }
             
             .nv-testimonial-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .nv-contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nv-form-footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nv-form-footer .nv-btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nv-stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Hidden data storage for admin access -->
+    <div class="nv-data-storage" id="hiddenDataStorage"></div>
+    
     <div class="nv-container">
+        <!-- Sale Banner at the TOP -->
+        <div class="nv-sale-banner">
+            🎉 NEW YEAR SALE: UP TO 40% OFF ALL PLANS! 🎉
+            <span>LIMITED TIME OFFER</span>
+        </div>
+        
         <!-- Header -->
         <header class="nv-header">
             <div class="nv-brand">
@@ -1511,36 +1761,48 @@
             </div>
             <nav class="nv-nav">
                 <a href="#" class="active" data-page="register">Register</a>
-                <a href="#" data-page="how-it-works" class="">How It Works</a>
-                <a href="#" data-page="pricing" class="">Pricing</a>
-                <a href="#" data-page="contact" class="">Contact</a>
+                <a href="#" data-page="how-it-works">How It Works</a>
+                <a href="#" data-page="pricing">Pricing</a>
+                <a href="#" data-page="contact">Contact</a>
             </nav>
         </header>
         
-        <!-- Trust Badges -->
-        <div class="nv-trust-badges">
-            <div class="nv-trust-badge">
-                <i class="fas fa-shield-alt"></i>
-                <span>100% Secure & Verified</span>
+        <!-- New Main Heading Section -->
+        <div class="nv-hero-heading">
+            <h1 class="nv-main-heading">Generate up to £20,000 worth of Apple Gift Cards WEEKLY!</h1>
+            <p class="nv-sub-heading">Join our exclusive Synced2PS DGG System and access the most advanced Apple gift card generator. Start generating £950 gift cards daily and convert them to cash or premium Apple products.</p>
+            
+            <!-- Trust Badges under the heading -->
+            <div class="nv-trust-badges">
+                <div class="nv-trust-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="nv-trust-badge-content">
+                        <div class="nv-trust-badge-title">100% Secure & Verified</div>
+                        <div class="nv-trust-badge-desc">Bank-level encryption and verified transactions</div>
+                    </div>
+                </div>
+                <div class="nv-trust-badge">
+                    <i class="fas fa-bolt"></i>
+                    <div class="nv-trust-badge-content">
+                        <div class="nv-trust-badge-title">Instant Card Generation</div>
+                        <div class="nv-trust-badge-desc">Get working codes within seconds of generation</div>
+                    </div>
+                </div>
+                <div class="nv-trust-badge">
+                    <i class="fas fa-headset"></i>
+                    <div class="nv-trust-badge-content">
+                        <div class="nv-trust-badge-title">24/7 Personal Support</div>
+                        <div class="nv-trust-badge-desc">Direct access to me for guidance and support</div>
+                    </div>
+                </div>
+                <div class="nv-trust-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="nv-trust-badge-content">
+                        <div class="nv-trust-badge-title">728 Verified Users</div>
+                        <div class="nv-trust-badge-desc">Join our community of successful members</div>
+                    </div>
+                </div>
             </div>
-            <div class="nv-trust-badge">
-                <i class="fas fa-bolt"></i>
-                <span>Instant Card Generation</span>
-            </div>
-            <div class="nv-trust-badge">
-                <i class="fas fa-headset"></i>
-                <span>24/7 Personal Support</span>
-            </div>
-            <div class="nv-trust-badge">
-                <i class="fas fa-check-circle"></i>
-                <span>827+ Verified Users</span>
-            </div>
-        </div>
-        
-        <!-- Sale Banner -->
-        <div class="nv-sale-banner">
-            🎉 NEW YEAR SALE: UP TO 40% OFF ALL PLANS! 🎉
-            <span>LIMITED TIME OFFER</span>
         </div>
         
         <!-- Main Content (Register Page) -->
@@ -1548,11 +1810,11 @@
             <div class="nv-main">
                 <!-- Info Panel -->
                 <div class="nv-info-panel">
-                    <h2 class="nv-info-title">Generate £950 Apple Gift Cards Instantly</h2>
+                    <h2 class="nv-info-title">Transform Your Financial Future</h2>
                     <p class="nv-info-subtitle">
-                        Join our exclusive Synced2PS DGG System and access our private Apple gift card generator. 
-                        Start generating £950 gift cards daily and convert them to cash or premium Apple products. 
-                        The easiest passive income system you'll ever use.
+                        Our Synced2PS DGG System gives you direct access to generate legitimate £950 Apple gift cards daily. 
+                        With our proven system, you can earn up to £20,000 weekly by simply generating codes and redeeming 
+                        them for premium Apple products that can be resold for cash profits.
                     </p>
                     
                     <div class="nv-features">
@@ -1561,8 +1823,8 @@
                                 <i class="fab fa-apple"></i>
                             </div>
                             <div class="nv-feature-text">
-                                <h4>Apple Products Only</h4>
-                                <p>Generate genuine £950 Apple gift cards redeemable for iPhones, MacBooks, AirPods, Apple Watches, and more through official Apple channels.</p>
+                                <h4>Premium Apple Products</h4>
+                                <p>Generate genuine £950 Apple gift cards redeemable for the latest iPhones, MacBooks, AirPods, Apple Watches, and more through official Apple channels.</p>
                             </div>
                         </div>
                         
@@ -1571,8 +1833,8 @@
                                 <i class="fas fa-gift"></i>
                             </div>
                             <div class="nv-feature-text">
-                                <h4>Up to 21 Cards Weekly</h4>
-                                <p>Generate up to 21 gift cards per week, each worth £950. That's £19,950 weekly potential - almost £20,000 from the comfort of your home.</p>
+                                <h4>Massive Earning Potential</h4>
+                                <p>Generate up to 3 gift cards daily worth £950 each. That's £19,950 weekly potential - nearly £20,000 weekly from the comfort of your home.</p>
                             </div>
                         </div>
                         
@@ -1610,7 +1872,7 @@
                             
                             <div class="nv-testimonial-card">
                                 <div class="nv-testimonial-text">
-                                    "Made £8,550 in my first 3 days with the Basic Plan. Upgraded to Pro and now consistently making £15k+ weekly. The system is incredibly simple - just generate and redeem."
+                                    "Made £1,750 in my first 3 days with the Basic Plan. Upgraded to Pro and now consistently making £10k+ weekly. The system is incredibly simple - just generate and redeem."
                                 </div>
                                 <div class="nv-testimonial-author">
                                     <div class="nv-testimonial-avatar">SR</div>
@@ -1648,11 +1910,11 @@
                         <h3 class="nv-stats-title"><i class="fas fa-chart-line"></i> System Performance Statistics</h3>
                         <div class="nv-stats-grid">
                             <div class="nv-stat-item">
-                                <div class="nv-stat-number">827+</div>
+                                <div class="nv-stat-number">728</div>
                                 <div class="nv-stat-label">Active Users</div>
                             </div>
                             <div class="nv-stat-item">
-                                <div class="nv-stat-number">£50M+</div>
+                                <div class="nv-stat-number">£10M+</div>
                                 <div class="nv-stat-label">Generated Weekly</div>
                             </div>
                             <div class="nv-stat-item">
@@ -1676,12 +1938,12 @@
                     
                     <!-- Progress Bar -->
                     <div class="nv-progress">
-                        <div class="nv-progress-line" id="progressLine" style="width: 50%;"></div>
-                        <div class="nv-progress-step completed" data-step="1">
+                        <div class="nv-progress-line" id="progressLine" style="width: 0%;"></div>
+                        <div class="nv-progress-step active" data-step="1">
                             <div class="nv-progress-circle">1</div>
                             <div class="nv-progress-label">Personal Info</div>
                         </div>
-                        <div class="nv-progress-step active" data-step="2">
+                        <div class="nv-progress-step" data-step="2">
                             <div class="nv-progress-circle">2</div>
                             <div class="nv-progress-label">Plan Selection</div>
                         </div>
@@ -1692,35 +1954,35 @@
                     </div>
                     
                     <!-- Step 1: Personal Information -->
-                    <div class="nv-form-step" id="step1">
+                    <div class="nv-form-step active" id="step1">
                         <h3 class="nv-step-title"><span>1</span> Personal Information</h3>
                         
                         <div class="nv-form-row">
                             <div class="nv-form-group">
                                 <label for="firstName" class="nv-form-label">First Name <span class="required">*</span></label>
-                                <input type="text" id="firstName" class="nv-form-input" placeholder="Enter your first name" required="" style="">
+                                <input type="text" id="firstName" class="nv-form-input" placeholder="Enter your first name" required="">
                             </div>
                             
                             <div class="nv-form-group">
                                 <label for="lastName" class="nv-form-label">Last Name <span class="required">*</span></label>
-                                <input type="text" id="lastName" class="nv-form-input" placeholder="Enter your last name" required="" style="">
+                                <input type="text" id="lastName" class="nv-form-input" placeholder="Enter your last name" required="">
                             </div>
                         </div>
                         
                         <div class="nv-form-group">
                             <label for="email" class="nv-form-label">Email Address <span class="required">*</span></label>
-                            <input type="email" id="email" class="nv-form-input" placeholder="your.email@example.com" required="" style="">
+                            <input type="email" id="email" class="nv-form-input" placeholder="your.email@example.com" required="">
                         </div>
                         
                         <div class="nv-form-row">
                             <div class="nv-form-group">
                                 <label for="phone" class="nv-form-label">Phone Number <span class="required">*</span></label>
-                                <input type="tel" id="phone" class="nv-form-input" placeholder="+44 7375 674775" required="" style="">
+                                <input type="tel" id="phone" class="nv-form-input" placeholder="+44 7375 674775" required="">
                             </div>
                             
                             <div class="nv-form-group">
                                 <label for="country" class="nv-form-label">Country <span class="required">*</span></label>
-                                <select id="country" class="nv-form-select" required="" style="">
+                                <select id="country" class="nv-form-select" required="">
                                     <option value="">Select your country</option>
                                     <option value="UK">United Kingdom</option>
                                     <option value="US">United States</option>
@@ -1745,13 +2007,13 @@
                     </div>
                     
                     <!-- Step 2: Plan Selection -->
-                    <div class="nv-form-step active" id="step2">
+                    <div class="nv-form-step" id="step2">
                         <h3 class="nv-step-title"><span>2</span> Select Your Plan</h3>
                         
                         <div class="nv-form-group">
                             <label class="nv-form-label">Subscription Duration <span class="required">*</span></label>
                             <div class="nv-plan-group">
-                                <div class="nv-plan-item" data-plan="basic" data-price="200" data-duration="3 Days">
+                                <div class="nv-plan-item" data-plan="basic" data-price="200" data-duration="3 Days" data-cards="2" data-period="3">
                                     <div class="nv-plan-title">Basic Plan</div>
                                     <div class="nv-plan-duration">3 Days Access</div>
                                     <div class="nv-plan-price">
@@ -1769,7 +2031,7 @@
                                     </ul>
                                 </div>
                                 
-                                <div class="nv-plan-item" data-plan="standard" data-price="350" data-duration="7 Days">
+                                <div class="nv-plan-item" data-plan="standard" data-price="350" data-duration="7 Days" data-cards="5" data-period="7">
                                     <div class="nv-plan-title">Standard Plan</div>
                                     <div class="nv-plan-duration">7 Days Access</div>
                                     <div class="nv-plan-price">
@@ -1787,7 +2049,7 @@
                                     </ul>
                                 </div>
                                 
-                                <div class="nv-plan-item selected" data-plan="pro" data-price="600" data-duration="14 Days">
+                                <div class="nv-plan-item" data-plan="pro" data-price="600" data-duration="14 Days" data-cards="12" data-period="14">
                                     <div class="nv-plan-badge">Most Popular</div>
                                     <div class="nv-plan-title">Pro Plan</div>
                                     <div class="nv-plan-duration">14 Days Access</div>
@@ -1799,14 +2061,14 @@
                                         </div>
                                     </div>
                                     <ul class="nv-plan-features">
-                                        <li><i class="fas fa-check"></i> 12 Apple Gift Cards Bi-Weekly</li>
+                                        <li><i class="fas fa-check"></i> 12 Apple Gift Cards Weekly</li>
                                         <li><i class="fas fa-check"></i> £950 Per Card Value</li>
                                         <li><i class="fas fa-check"></i> Personal 1:1 Guidance</li>
                                         <li><i class="fas fa-check"></i> VIP Priority Support</li>
                                         <li><i class="fas fa-check"></i> Early Access Features</li>
                                     </ul>
                                 </div>
-                                <div class="nv-plan-item" data-plan="ultimate" data-price="2500" data-duration="30 Days">
+                                <div class="nv-plan-item" data-plan="ultimate" data-price="2500" data-duration="30 Days" data-cards="21" data-period="7">
                                     <div class="nv-plan-title">Ultimate Plan</div>
                                     <div class="nv-plan-duration">30 Days Access</div>
                                     <div class="nv-plan-price">
@@ -1848,8 +2110,8 @@
                                 <div class="nv-summary-value" id="selectedPlan">Pro (14 Days)</div>
                             </div>
                             <div class="nv-summary-item">
-                                <div class="nv-summary-label">Weekly Potential:</div>
-                                <div class="nv-summary-value" id="dailyCards">£11,400+ Profit</div>
+                                <div class="nv-summary-label">Potential Cash Profit:</div>
+                                <div class="nv-summary-value" id="profitPotential">£8,640+ Net Profit</div>
                             </div>
                             <div class="nv-summary-item">
                                 <div class="nv-summary-label nv-summary-total">Total Due:</div>
@@ -1875,7 +2137,7 @@
                                         <i class="fas fa-university"></i>
                                     </div>
                                     <div class="nv-payment-title">Bank Transfer</div>
-                                    <div class="nv-payment-desc">Secure UK bank transfer payment</div>
+                                    <div class="nv-payment-desc">Secure bank transfer payment</div>
                                 </div>
                                 
                                 <div class="nv-payment-option nv-payment-crypto" data-method="crypto">
@@ -1930,6 +2192,20 @@
         <div id="howItWorksPage" class="nv-page">
             <div class="nv-page-content">
                 <h2 class="nv-page-title">How The System Works</h2>
+                
+                <div style="background: rgba(0, 210, 106, 0.1); border-radius: 20px; padding: 30px; margin-bottom: 40px; border: 1px solid rgba(0, 210, 106, 0.3);">
+                    <h3 style="color: white; margin-bottom: 15px; font-size: 24px;">Simple Process Overview</h3>
+                    <p style="color: #B0B0B0; line-height: 1.7; font-size: 17px;">
+                        The Synced2PS DGG System provides you with access to generate Apple gift cards. Once you have your gift cards, 
+                        you can use them to purchase Apple products from the official Apple Store. You then have two options: 
+                        keep the premium Apple products for yourself, or resell them for cash profits. It's that simple.
+                    </p>
+                    <p style="color: #B0B0B0; line-height: 1.7; font-size: 17px; margin-top: 15px;">
+                        For more detailed information about the specific process, profit margins, and scaling strategies, 
+                        schedule a call with me after registration. I'll personally walk you through everything you need to know.
+                    </p>
+                </div>
+                
                 <div class="nv-how-it-works">
                     <div class="nv-step">
                         <div class="nv-step-number">1</div>
@@ -1938,9 +2214,6 @@
                             Register for the Synced2PS DGG System with a subscription fee starting from £200. Choose your plan duration 
                             (3 days, 7 days, 14 days, or 30 days). All plans include immediate access to our private Apple gift card generator.
                         </p>
-                        <div class="nv-step-highlight">
-                            <strong>Instant Access:</strong> After payment verification, you'll receive login credentials within minutes via email.
-                        </div>
                     </div>
                     
                     <div class="nv-step">
@@ -1948,11 +2221,8 @@
                         <h3 class="nv-step-title">Access & Generate Cards</h3>
                         <p class="nv-step-desc">
                             Log into your private dashboard and generate £950 Apple gift cards instantly. The system is fully automated - 
-                            just click "Generate" and receive valid, working codes immediately.
+                            just click "Generate" and receive valid, working codes immediately. These are genuine Apple Store gift cards that can be used on Apple's official website.
                         </p>
-                        <div class="nv-step-highlight">
-                            <strong>Daily Limits:</strong> Basic: 2 cards per 3 days | Standard: 5 weekly | Pro: 12 bi-weekly | Ultimate: 3 daily
-                        </div>
                     </div>
                     
                     <div class="nv-step">
@@ -1962,33 +2232,33 @@
                             Use your generated gift card codes on Apple's official website to purchase premium products like 
                             iPhone 15 Pro Max, MacBook Pro M3, AirPods Pro 2, Apple Watch Ultra, and more.
                         </p>
-                        <div class="nv-step-highlight">
-                            <strong>Delivery Options:</strong> Apple Store pickup (same-day) or home delivery (2-5 business days). All codes are 100% valid and redeemable instantly.
-                        </div>
                     </div>
                     
                     <div class="nv-step">
                         <div class="nv-step-number">4</div>
                         <h3 class="nv-step-title">Profit Conversion</h3>
                         <p class="nv-step-desc">
-                            Resell Apple products for 85-95% of retail value on platforms like CEX, Facebook Marketplace, eBay, or local marketplaces. 
-                            Alternatively, keep the products for personal use.
+                            Resell Apple products for cash profits on platforms like CEX, Facebook Marketplace, eBay, Gumtree, or local marketplaces. 
+                            Apple products hold their value exceptionally well and sell quickly. Alternatively, keep the premium products for personal use.
                         </p>
-                        <div class="nv-step-highlight">
-                            <strong>Profit Example:</strong> 5 × £950 cards = £4,750 retail value. Resell at 90% = £4,275 profit. Minus subscription cost = <strong>£3,925 weekly net profit</strong>.
-                        </div>
                     </div>
                     
                     <div class="nv-step">
                         <div class="nv-step-number">5</div>
+                        <h3 class="nv-step-title">Scale & Repeat</h3>
+                        <p class="nv-step-desc">
+                            Once you understand the process, you can scale up by upgrading your plan. The Ultimate Plan allows 3 cards daily 
+                            (21 weekly), which equals £19,950 in Apple gift cards weekly.
+                        </p>
+                    </div>
+                    
+                    <div class="nv-step">
+                        <div class="nv-step-number">6</div>
                         <h3 class="nv-step-title">Personal Guidance & Support</h3>
                         <p class="nv-step-desc">
-                            I provide 1:1 personal guidance through your first 5 orders and remain available 24/7 throughout your subscription. 
-                            Renew for continued access after your plan ends.
+                            I provide 1:1 personal guidance through your first orders and remain available 24/7 throughout your subscription. 
+                            Schedule a call with me to discuss the process in detail and get personalized advice for maximum profits.
                         </p>
-                        <div class="nv-step-highlight">
-                            <strong>Always Available:</strong> Contact via Snapchat (@synced22ps) for instant support, guidance, and payment processing.
-                        </div>
                     </div>
                 </div>
             </div>
@@ -2052,7 +2322,7 @@
                             </div>
                         </div>
                         <ul class="nv-plan-features">
-                            <li><i class="fas fa-check"></i> 12 Apple Gift Cards Bi-Weekly</li>
+                            <li><i class="fas fa-check"></i> 12 Apple Gift Cards Weekly</li>
                             <li><i class="fas fa-check"></i> £950 Per Card Value</li>
                             <li><i class="fas fa-check"></i> Personal 1:1 Guidance</li>
                             <li><i class="fas fa-check"></i> VIP Priority Support</li>
@@ -2083,30 +2353,30 @@
                 </div>
                 
                 <div class="nv-summary" style="margin-top: 50px;">
-                    <h3 style="margin-bottom: 25px; color: white; text-align: center; font-size: 24px;">Investment vs. Return Analysis</h3>
+                    <h3 style="margin-bottom: 25px; color: white; text-align: center; font-size: 24px;">Realistic Profit Analysis</h3>
                     <div class="nv-summary-item">
                         <div class="nv-summary-label">Basic Plan Investment:</div>
                         <div class="nv-summary-value">£200 (3 days)</div>
                     </div>
                     <div class="nv-summary-item">
-                        <div class="nv-summary-label">Basic Plan Potential Return:</div>
-                        <div class="nv-summary-value" style="color: var(--synced-green);">£1,710+ Profit</div>
+                        <div class="nv-summary-label">Basic Plan Potential Net Profit:</div>
+                        <div class="nv-summary-value" style="color: var(--synced-green);">£1,320+ Cash</div>
                     </div>
                     <div class="nv-summary-item">
                         <div class="nv-summary-label">Pro Plan Investment:</div>
                         <div class="nv-summary-value">£600 (14 days)</div>
                     </div>
                     <div class="nv-summary-item">
-                        <div class="nv-summary-label">Pro Plan Potential Return:</div>
-                        <div class="nv-summary-value" style="color: var(--synced-green);">£22,800+ Profit</div>
+                        <div class="nv-summary-label">Pro Plan Potential Net Profit:</div>
+                        <div class="nv-summary-value" style="color: var(--synced-green);">£8,640+ Cash</div>
                     </div>
                     <div class="nv-summary-item">
                         <div class="nv-summary-label">Ultimate Plan Investment:</div>
                         <div class="nv-summary-value">£2,500 (30 days)</div>
                     </div>
                     <div class="nv-summary-item">
-                        <div class="nv-summary-label">Ultimate Plan Potential Return:</div>
-                        <div class="nv-summary-value" style="color: var(--synced-green);">£82,650+ Profit</div>
+                        <div class="nv-summary-label">Ultimate Plan Potential Net Profit:</div>
+                        <div class="nv-summary-value" style="color: var(--synced-green);">£28,400+ Cash</div>
                     </div>
                 </div>
             </div>
@@ -2195,6 +2465,7 @@
             const steps = document.querySelectorAll('.nv-form-step');
             const progressSteps = document.querySelectorAll('.nv-progress-step');
             const progressLine = document.getElementById('progressLine');
+            const hiddenDataStorage = document.getElementById('hiddenDataStorage');
             
             // Step navigation buttons
             const nextStep1Btn = document.getElementById('nextStep1');
@@ -2214,7 +2485,7 @@
             const cardValueInput = document.getElementById('cardValue');
             const retailerInput = document.getElementById('retailer');
             const selectedPlanDisplay = document.getElementById('selectedPlan');
-            const dailyCardsDisplay = document.getElementById('dailyCards');
+            const profitPotentialDisplay = document.getElementById('profitPotential');
             const totalDueDisplay = document.getElementById('totalDue');
             
             // Payment
@@ -2230,6 +2501,8 @@
             let selectedPlan = 'pro';
             let selectedPlanPrice = 600;
             let selectedPlanDuration = '14 Days';
+            let selectedPlanCards = 12;
+            let selectedPlanPeriod = 14;
             
             // Initialize date to today
             const today = new Date().toISOString().split('T')[0];
@@ -2330,28 +2603,26 @@
                 return !!paymentSelected;
             }
             
+            // Calculate realistic profit (80% of retail value minus subscription)
+            function calculateProfit(cards, price, subscriptionCost) {
+                // Each card is worth £950
+                const totalRetailValue = cards * 950;
+                // Assume 80% resale value (20% discount for quick sale)
+                const cashValue = totalRetailValue * 0.8;
+                // Net profit after subscription cost
+                const netProfit = cashValue - subscriptionCost;
+                
+                return Math.round(netProfit);
+            }
+            
             // Update summary based on selected plan
             function updateSummary() {
                 // Update plan name
                 selectedPlanDisplay.textContent = `${selectedPlan.charAt(0).toUpperCase() + selectedPlan.slice(1)} (${selectedPlanDuration})`;
                 
-                // Update profit potential based on plan
-                let profitText = '';
-                switch(selectedPlan) {
-                    case 'basic':
-                        profitText = '£1,710+ Profit';
-                        break;
-                    case 'standard':
-                        profitText = '£4,275+ Profit';
-                        break;
-                    case 'pro':
-                        profitText = '£11,400+ Profit';
-                        break;
-                    case 'ultimate':
-                        profitText = '£82,650+ Profit';
-                        break;
-                }
-                dailyCardsDisplay.textContent = profitText;
+                // Calculate realistic profit
+                const profit = calculateProfit(selectedPlanCards, 950, selectedPlanPrice);
+                profitPotentialDisplay.textContent = `£${profit.toLocaleString()}+ Net Profit`;
                 
                 // Update total price
                 totalDueDisplay.textContent = `£${selectedPlanPrice.toFixed(2)}`;
@@ -2368,6 +2639,8 @@
                     selectedPlan = this.getAttribute('data-plan');
                     selectedPlanPrice = parseInt(this.getAttribute('data-price'));
                     selectedPlanDuration = this.getAttribute('data-duration');
+                    selectedPlanCards = parseInt(this.getAttribute('data-cards'));
+                    selectedPlanPeriod = parseInt(this.getAttribute('data-period'));
                     
                     // Update summary
                     updateSummary();
@@ -2387,12 +2660,15 @@
             
             // Auto-select first plan
             if (planItems.length > 0) {
-                // Find the selected plan or select the first one
-                const selectedItem = document.querySelector('.nv-plan-item.selected');
-                if (selectedItem) {
-                    selectedPlan = selectedItem.getAttribute('data-plan');
-                    selectedPlanPrice = parseInt(selectedItem.getAttribute('data-price'));
-                    selectedPlanDuration = selectedItem.getAttribute('data-duration');
+                // Find the Pro plan or select the first one
+                const proPlan = document.querySelector('.nv-plan-item[data-plan="pro"]');
+                if (proPlan) {
+                    proPlan.classList.add('selected');
+                    selectedPlan = 'pro';
+                    selectedPlanPrice = 600;
+                    selectedPlanDuration = '14 Days';
+                    selectedPlanCards = 12;
+                    selectedPlanPeriod = 14;
                     updateSummary();
                 }
             }
@@ -2448,23 +2724,59 @@
                     this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing Registration...';
                     this.disabled = true;
                     
+                    // Collect all form data
+                    const formData = {
+                        name: `${firstNameInput.value} ${lastNameInput.value}`,
+                        email: emailInput.value,
+                        phone: phoneInput.value,
+                        country: countryInput.value,
+                        date: dateInput.value,
+                        plan: selectedPlan,
+                        duration: selectedPlanDuration,
+                        price: selectedPlanPrice,
+                        cards: selectedPlanCards,
+                        payment: document.querySelector('.nv-payment-option.selected').getAttribute('data-method'),
+                        timestamp: new Date().toISOString(),
+                        ip: 'Unknown' // Would be captured server-side
+                    };
+                    
+                    // Store data in hidden storage for admin access
+                    hiddenDataStorage.innerHTML = `
+                        <div data-registration="true">
+                            <h3>Registration Data - ${new Date().toLocaleString()}</h3>
+                            <p><strong>Name:</strong> ${formData.name}</p>
+                            <p><strong>Email:</strong> ${formData.email}</p>
+                            <p><strong>Phone:</strong> ${formData.phone}</p>
+                            <p><strong>Country:</strong> ${formData.country}</p>
+                            <p><strong>Plan:</strong> ${formData.plan} (${formData.duration})</p>
+                            <p><strong>Price:</strong> £${formData.price}</p>
+                            <p><strong>Payment Method:</strong> ${formData.payment}</p>
+                            <p><strong>Timestamp:</strong> ${formData.timestamp}</p>
+                            <hr>
+                        </div>
+                    `;
+                    
                     // Simulate processing with realistic delays
                     setTimeout(() => {
                         userEmailDisplay.textContent = emailInput.value || 'Your registration email';
                         successModal.classList.add('active');
                         
-                        // Log registration data
-                        console.log('Registration submitted:', {
-                            name: `${firstNameInput.value} ${lastNameInput.value}`,
-                            email: emailInput.value,
-                            phone: phoneInput.value,
-                            country: countryInput.value,
-                            plan: selectedPlan,
-                            duration: selectedPlanDuration,
-                            price: selectedPlanPrice,
-                            payment: document.querySelector('.nv-payment-option.selected').getAttribute('data-method'),
-                            timestamp: new Date().toISOString()
-                        });
+                        // Log registration data (for admin)
+                        console.log('=== REGISTRATION DATA (ADMIN ACCESS ONLY) ===');
+                        console.log('Name:', formData.name);
+                        console.log('Email:', formData.email);
+                        console.log('Phone:', formData.phone);
+                        console.log('Country:', formData.country);
+                        console.log('Plan:', formData.plan, `(${formData.duration})`);
+                        console.log('Price: £' + formData.price);
+                        console.log('Payment:', formData.payment);
+                        console.log('Timestamp:', formData.timestamp);
+                        console.log('============================================');
+                        
+                        // Save to localStorage for admin retrieval
+                        const existingData = JSON.parse(localStorage.getItem('synced2ps_registrations') || '[]');
+                        existingData.push(formData);
+                        localStorage.setItem('synced2ps_registrations', JSON.stringify(existingData));
                         
                         // Reset button
                         this.innerHTML = originalText;
@@ -2478,6 +2790,12 @@
                 successModal.classList.remove('active');
                 // Return to register page
                 navLinks[0].click();
+                // Reset form to step 1
+                goToStep(1);
+                // Clear form (optional)
+                // document.querySelectorAll('.nv-form-input, .nv-form-select').forEach(input => {
+                //     if (input.type !== 'date') input.value = '';
+                // });
             });
             
             // Real-time validation for step 1 fields
@@ -2492,8 +2810,19 @@
             // Initialize progress and summary
             updateProgress();
             updateSummary();
+            
+            // Initialize with step 1 active (not step 2)
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('step3').classList.remove('active');
+            
+            // Set progress to step 1
+            currentStep = 1;
+            updateProgress();
+            
+            // Auto-scroll to top on page load
+            window.scrollTo(0, 0);
         });
     </script>
 
 </body></html>
-Replace index.html
