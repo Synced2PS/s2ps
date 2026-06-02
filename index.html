@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="AppleGen‑Executive — strategic execution and high‑leverage partnerships for global leaders.">
-    <title>AppleGen‑Executive | Direct Access</title>
+    <meta name="description" content="Adam2Solutions — strategic guidance for financial freedom and lasting success.">
+    <title>Adam2Solutions | Your Success Starts Here</title>
     <style>
         * {
             margin: 0;
@@ -23,7 +23,6 @@
             position: relative;
         }
 
-        /* animated gradient background */
         body::before {
             content: '';
             position: fixed;
@@ -31,43 +30,29 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.2), transparent 55%),
-                        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.12), transparent 60%),
-                        radial-gradient(circle at 40% 90%, rgba(236, 72, 153, 0.08), transparent 50%);
+            background: radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.12), transparent 55%),
+                        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1), transparent 60%);
             pointer-events: none;
             z-index: 0;
-            animation: slowPulse 8s ease-in-out infinite;
-        }
-
-        @keyframes slowPulse {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
         }
 
         .card {
-            max-width: 780px;
+            max-width: 800px;
             width: 100%;
-            background: rgba(8, 10, 16, 0.92);
+            background: rgba(8, 10, 16, 0.94);
             backdrop-filter: blur(8px);
             border-radius: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.08);
             overflow: hidden;
-            box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.02);
+            box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.6);
             position: relative;
             z-index: 1;
-            transition: all 0.3s ease;
         }
 
-        .card:hover {
-            border-color: rgba(139, 92, 246, 0.3);
-            box-shadow: 0 35px 55px -20px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(139, 92, 246, 0.1);
-        }
-
-        /* animated accent line */
         .accent-line {
             height: 3px;
-            background: linear-gradient(90deg, #8B5CF6, #3B82F6, #EC4899, #8B5CF6);
-            background-size: 300% 100%;
+            background: linear-gradient(90deg, #22c55e, #8B5CF6, #22c55e);
+            background-size: 200% 100%;
             animation: gradientMove 3s ease infinite;
         }
 
@@ -78,318 +63,304 @@
         }
 
         .content {
-            padding: 2.8rem 2.5rem 2.5rem;
-            position: relative;
-            z-index: 1;
+            padding: 2rem 2rem 2rem;
         }
 
-        /* brand header */
         .brand {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
             gap: 1rem;
         }
 
-        .logo {
-            font-size: 1.2rem;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
             font-weight: 700;
-            letter-spacing: -0.3px;
-            background: linear-gradient(135deg, #FFFFFF, #A5B4FC, #C4B5FD);
+            background: linear-gradient(135deg, #FFFFFF, #22c55e, #A78BFA);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo::before {
-            content: '🍎';
-            font-size: 1.1rem;
-            background: none;
-            -webkit-background-clip: unset;
-            color: #A78BFA;
+            letter-spacing: -0.3px;
         }
 
         .enquire-badge {
-            background: rgba(139, 92, 246, 0.15);
-            border: 1px solid rgba(139, 92, 246, 0.4);
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(34, 197, 94, 0.3);
             padding: 0.4rem 1.2rem;
             border-radius: 100px;
             font-size: 0.7rem;
             font-weight: 600;
-            letter-spacing: 1px;
-            color: #A78BFA;
-            text-transform: uppercase;
-            backdrop-filter: blur(4px);
-            transition: all 0.3s;
-            cursor: default;
+            color: #4ade80;
         }
 
-        .enquire-badge:hover {
-            background: rgba(139, 92, 246, 0.25);
-            border-color: #8B5CF6;
-            letter-spacing: 1.5px;
-        }
-
-        /* headline */
         h1 {
-            font-size: 3rem;
+            font-size: 2.3rem;
             font-weight: 700;
             letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #FFFFFF 0%, #C4B5FD 70%, #A78BFA 100%);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #22c55e 70%, #A78BFA 100%);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
         }
 
         .description {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #9CA3AF;
-            line-height: 1.5;
-            margin-bottom: 2.2rem;
-            max-width: 90%;
-            border-left: 2px solid #8B5CF6;
-            padding-left: 1.2rem;
+            margin-bottom: 1.5rem;
+            border-left: 2px solid #22c55e;
+            padding-left: 1rem;
         }
 
-        /* 3x2 grid for exactly 6 buttons */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.9rem;
+            gap: 0.8rem;
             margin-bottom: 2rem;
         }
 
         .contact-item {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 1.2rem;
-            padding: 1.1rem 1.2rem;
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
             text-decoration: none;
-            transition: all 0.25s ease;
+            transition: all 0.25s;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* subtle shine effect on hover */
-        .contact-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .contact-item:hover::after {
-            left: 100%;
+            gap: 0.8rem;
         }
 
         .contact-item:hover {
-            background: rgba(139, 92, 246, 0.08);
-            border-color: rgba(139, 92, 246, 0.4);
+            background: rgba(34, 197, 94, 0.08);
+            border-color: rgba(34, 197, 94, 0.3);
             transform: translateY(-2px);
         }
 
         .icon-bg {
-            width: 44px;
-            height: 44px;
+            width: 36px;
+            height: 36px;
             background: rgba(255, 255, 255, 0.04);
-            border-radius: 1rem;
+            border-radius: 0.8rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
-            transition: 0.2s;
-        }
-
-        .contact-item:hover .icon-bg {
-            background: rgba(139, 92, 246, 0.15);
-            transform: scale(1.05);
-        }
-
-        .contact-details {
-            flex: 1;
+            font-size: 1.1rem;
         }
 
         .contact-label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
             color: #6B7280;
-            margin-bottom: 0.25rem;
         }
 
         .contact-value {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
             color: #E5E7EB;
-            word-break: break-word;
         }
 
         .arrow {
             color: #4B5563;
+            margin-left: auto;
             font-size: 0.9rem;
-            transition: transform 0.2s;
         }
 
-        .contact-item:hover .arrow {
-            transform: translateX(4px);
-            color: #A78BFA;
-        }
-
-        /* scheduling section — single button now */
-        .schedule-section {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(59, 130, 246, 0.04) 100%);
+        .booking-section {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(139, 92, 246, 0.03));
             border-radius: 1.5rem;
-            padding: 1.3rem 1.5rem;
-            margin: 1.2rem 0 1.5rem;
-            border: 1px solid rgba(139, 92, 246, 0.2);
+            padding: 1.3rem;
+            margin: 1rem 0 1.5rem;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .booking-header h3 {
+            color: white;
+            font-size: 1rem;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            transition: all 0.3s;
-        }
-
-        .schedule-section:hover {
-            border-color: rgba(139, 92, 246, 0.4);
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(59, 130, 246, 0.06) 100%);
-        }
-
-        .schedule-text h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #FFFFFF;
-            margin-bottom: 0.2rem;
-        }
-
-        .schedule-text p {
-            font-size: 0.75rem;
-            color: #9CA3AF;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #8B5CF6, #6366F1);
-            color: white;
-            padding: 0.7rem 1.8rem;
-            border-radius: 2rem;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.85rem;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
             gap: 0.5rem;
+        }
+
+        .date-picker {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            color: white;
+            font-family: inherit;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .slot-selector {
+            margin-bottom: 1rem;
+        }
+
+        .slot-dropdown {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 1rem;
+            color: white;
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .slot-dropdown option {
+            background: #111318;
+            color: white;
+        }
+
+        .slot-dropdown option.booked-option {
+            color: #F87171;
+            text-decoration: line-through;
+        }
+
+        .booking-form {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: none;
+        }
+
+        .booking-form.visible {
+            display: block;
+        }
+
+        .booking-form input, .booking-form textarea {
+            width: 100%;
+            padding: 0.7rem;
+            margin: 0.5rem 0;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.8rem;
+            color: white;
+            font-family: inherit;
+        }
+
+        .booking-form input:focus, .booking-form textarea:focus {
+            outline: none;
+            border-color: #22c55e;
+        }
+
+        .confirm-btn {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 2rem;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+            font-weight: 600;
+            width: 100%;
+            margin-top: 0.5rem;
         }
 
-        .btn:hover {
-            background: linear-gradient(135deg, #7C3AED, #4F46E5);
+        .confirm-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
         }
 
-        .btn:active {
-            transform: translateY(1px);
+        .admin-panel {
+            display: none;
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background: rgba(0,0,0,0.4);
+            border-radius: 1rem;
         }
 
-        /* footer with email and copy button */
+        .admin-panel.visible {
+            display: block;
+        }
+
+        .admin-btn {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 0.4rem 0.8rem;
+            border-radius: 2rem;
+            color: #F87171;
+            font-size: 0.7rem;
+            cursor: pointer;
+            margin-right: 0.5rem;
+            margin-bottom: 0.3rem;
+        }
+
         .footer-note {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 1.2rem;
+            padding-top: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #6B7280;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.5rem;
         }
 
         .email-footer {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .email-link {
-            display: flex;
-            align-items: center;
             gap: 0.5rem;
         }
 
-        .email-link a {
-            color: #A78BFA;
+        .email-footer a {
+            color: #4ade80;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .email-link a:hover {
-            color: #C4B5FD;
-            text-decoration: underline;
         }
 
         .copy-btn {
-            background: rgba(139, 92, 246, 0.15);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            padding: 0.25rem 0.75rem;
-            border-radius: 40px;
-            font-size: 0.65rem;
-            font-weight: 500;
-            color: #A78BFA;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2rem;
+            font-size: 0.6rem;
             cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .copy-btn:hover {
-            background: rgba(139, 92, 246, 0.3);
-            border-color: #8B5CF6;
-            color: white;
-            transform: scale(0.98);
+            color: #4ade80;
         }
 
         .badge-group {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
         .badge-group span {
             background: rgba(255, 255, 255, 0.03);
-            padding: 0.2rem 0.7rem;
-            border-radius: 40px;
-            font-size: 0.65rem;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            padding: 0.2rem 0.6rem;
+            border-radius: 2rem;
+            font-size: 0.6rem;
         }
 
         .live-dot {
@@ -402,24 +373,23 @@
             margin-right: 4px;
         }
 
-        /* toast notification */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
         .toast {
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: rgba(139, 92, 246, 0.95);
-            backdrop-filter: blur(12px);
+            background: rgba(34, 197, 94, 0.95);
             color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 60px;
-            font-size: 0.85rem;
-            font-weight: 500;
+            padding: 0.7rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
             z-index: 1000;
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
-            pointer-events: none;
+            transition: transform 0.3s;
             white-space: nowrap;
         }
 
@@ -428,36 +398,10 @@
         }
 
         @media (max-width: 640px) {
-            .content {
-                padding: 1.6rem;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 0.7rem;
-            }
-            .description {
-                max-width: 100%;
-            }
-            .schedule-section {
-                flex-direction: column;
-                text-align: center;
-            }
-            .brand {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .footer-note {
-                flex-direction: column;
-                text-align: center;
-            }
-            .toast {
-                white-space: normal;
-                text-align: center;
-                max-width: 85%;
-            }
+            .content { padding: 1.2rem; }
+            h1 { font-size: 1.8rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .toast { white-space: normal; text-align: center; max-width: 85%; }
         }
     </style>
 </head>
@@ -466,164 +410,520 @@
         <div class="accent-line"></div>
         <div class="content">
             <div class="brand">
-                <div class="logo">APPLEGEN‑EXECUTIVE</div>
-                <div class="enquire-badge">✦ ENQUIRE NOW</div>
+                <div class="logo-container" id="secretAdminTrigger">
+                    <div class="logo-icon">🍎</div>
+                    <div class="logo-text">ADAM2SOLUTIONS</div>
+                </div>
+                <div class="enquire-badge">✦ START HERE</div>
             </div>
 
-            <h1>Direct executive access.</h1>
+            <h1>You're closer than you think.</h1>
             <div class="description">
-                High‑leverage partnerships, strategic execution, and global deployment for ambitious leaders.
+                One conversation. A clear path. The freedom you've been working toward.
             </div>
 
             <div class="contact-grid">
-                <a href="https://twitter.com/APPLEGEN_EXEC" class="contact-item" target="_blank" rel="noopener noreferrer">
+                <a href="https://twitter.com/ADAM2SOLUTIONS" class="contact-item" target="_blank">
                     <div class="icon-bg">𝕏</div>
-                    <div class="contact-details">
-                        <div class="contact-label">X (Twitter)</div>
-                        <div class="contact-value">@APPLEGEN_EXEC</div>
-                    </div>
+                    <div><div class="contact-label">X (Twitter)</div><div class="contact-value">@ADAM2SOLUTIONS</div></div>
                     <div class="arrow">→</div>
                 </a>
-
-                <a href="https://instagram.com/applegen_executive" class="contact-item" target="_blank" rel="noopener noreferrer">
+                <a href="https://instagram.com/adam2solutions" class="contact-item" target="_blank">
                     <div class="icon-bg">📷</div>
-                    <div class="contact-details">
-                        <div class="contact-label">Instagram</div>
-                        <div class="contact-value">@applegen_executive</div>
-                    </div>
+                    <div><div class="contact-label">Instagram</div><div class="contact-value">@adam2solutions</div></div>
                     <div class="arrow">→</div>
                 </a>
-
-                <a href="https://discord.gg/applegen" class="contact-item" target="_blank" rel="noopener noreferrer">
+                <a href="https://discord.gg/adam2solutions" class="contact-item" target="_blank">
                     <div class="icon-bg">🎧</div>
-                    <div class="contact-details">
-                        <div class="contact-label">Discord</div>
-                        <div class="contact-value">Join server / DM</div>
-                    </div>
+                    <div><div class="contact-label">Discord</div><div class="contact-value">Join server / DM</div></div>
                     <div class="arrow">→</div>
                 </a>
-
-                <a href="https://snapchat.com/add/applegen_exec" class="contact-item" target="_blank" rel="noopener noreferrer">
+                <a href="https://snapchat.com/add/adam2solutions" class="contact-item" target="_blank">
                     <div class="icon-bg">👻</div>
-                    <div class="contact-details">
-                        <div class="contact-label">Snapchat</div>
-                        <div class="contact-value">@applegen_exec</div>
-                    </div>
+                    <div><div class="contact-label">Snapchat</div><div class="contact-value">@adam2solutions</div></div>
                     <div class="arrow">→</div>
                 </a>
-
-                <a href="https://wa.me/14155551234" class="contact-item" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/14155551234" class="contact-item" target="_blank">
                     <div class="icon-bg">📱</div>
-                    <div class="contact-details">
-                        <div class="contact-label">WhatsApp</div>
-                        <div class="contact-value">+1 (415) 555-1234</div>
-                    </div>
+                    <div><div class="contact-label">WhatsApp</div><div class="contact-value">+1 (415) 555-1234</div></div>
                     <div class="arrow">→</div>
                 </a>
-
-                <a href="https://t.me/applegen_exec" class="contact-item" target="_blank" rel="noopener noreferrer">
+                <a href="https://t.me/adam2solutions" class="contact-item" target="_blank">
                     <div class="icon-bg">📨</div>
-                    <div class="contact-details">
-                        <div class="contact-label">Telegram</div>
-                        <div class="contact-value">@applegen_exec</div>
-                    </div>
+                    <div><div class="contact-label">Telegram</div><div class="contact-value">@adam2solutions</div></div>
                     <div class="arrow">→</div>
                 </a>
             </div>
 
-            <div class="schedule-section">
-                <div class="schedule-text">
-                    <h4>🎯 Strategic alignment call</h4>
-                    <p>20 minutes • roadmap discussion • no obligation</p>
+            <div class="booking-section">
+                <div class="booking-header">
+                    <h3>🎯 Your first step — no strings attached</h3>
+                    <input type="date" id="datePicker" class="date-picker">
                 </div>
-                <a href="#" class="btn" id="scheduleBtn">📅 Schedule now</a>
+                
+                <div class="slot-selector">
+                    <select id="slotDropdown" class="slot-dropdown">
+                        <option value="">-- Select a time (GMT) --</option>
+                    </select>
+                </div>
+
+                <div id="bookingForm" class="booking-form">
+                    <input type="text" id="clientName" placeholder="What's your name? *">
+                    <input type="email" id="clientEmail" placeholder="Best email to reach you *">
+                    <textarea id="clientNote" rows="2" placeholder="What's on your mind? (optional — but it helps me prepare)"></textarea>
+                    <button id="confirmBookingBtn" class="confirm-btn">Start the conversation →</button>
+                </div>
+            </div>
+
+            <div id="adminPanel" class="admin-panel">
+                <button class="admin-btn" id="historyBtn">📋 View bookings</button>
+                <button class="admin-btn" id="exportBtn">📥 Export CSV</button>
+                <button class="admin-btn" id="clearBookingsBtn">🗑️ Clear all</button>
+                <button class="admin-btn" id="logoutAdminBtn" style="border-color: rgba(34,197,94,0.3); color:#4ade80;">🔒 Exit admin</button>
             </div>
 
             <div class="footer-note">
                 <div class="email-footer">
-                    <div class="email-link">
-                        ✉️ <a href="mailto:connect@applegen.com" id="emailAddress">connect@applegen.com</a>
-                    </div>
-                    <button class="copy-btn" id="copyEmailBtn">📋 Copy email</button>
+                    ✉️ <a href="mailto:hello@adam2solutions.com">hello@adam2solutions.com</a>
+                    <button class="copy-btn" id="copyEmailBtn">Copy</button>
                 </div>
                 <div class="badge-group">
-                    <span><span class="live-dot"></span> 24/7 team active response</span>
+                    <span><span class="live-dot"></span> Real people, real responses</span>
                     <span>🌍 LDN / DXB / GLOBAL</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- toast notification element -->
-    <div id="toast" class="toast">✨ Message</div>
+    <div id="toast" class="toast"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        const toast = document.getElementById('toast');
-
-        function showToast(message, isError = false) {
-            toast.textContent = message;
-            if (isError) {
-                toast.style.background = 'rgba(239, 68, 68, 0.95)';
-            } else {
-                toast.style.background = 'rgba(139, 92, 246, 0.95)';
+        // ========== SUPABASE CONFIGURATION ==========
+        const SUPABASE_URL = 'https://helthkywdrchrtujyfvk.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_fNvFWWCW0V0kpkkPKhCOKg_oM7oEoCN';
+        
+        // ========== EMAILJS CONFIGURATION ==========
+        // 🔴 IMPORTANT: You need to set up EmailJS (free) for automatic emails
+        // Step 1: Go to https://www.emailjs.com and sign up (free)
+        // Step 2: Create an email service (Gmail, Outlook, etc.)
+        // Step 3: Create an email template
+        // Step 4: Get your Public Key from Account > API Keys
+        const EMAILJS_PUBLIC_KEY = 'YOUR_EMAILJS_PUBLIC_KEY'; // Get from EmailJS dashboard
+        const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'; // Create in EmailJS
+        const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // Create in EmailJS
+        const ADMIN_EMAIL = 'hello@adam2solutions.com';
+        
+        // Initialize Supabase
+        let supabase;
+        let bookingsTableReady = false;
+        
+        async function initSupabase() {
+            try {
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                
+                // Test connection
+                const { error } = await supabase
+                    .from('bookings')
+                    .select('count', { count: 'exact', head: true });
+                
+                if (error && error.message.includes('relation') && error.message.includes('does not exist')) {
+                    console.error('❌ Bookings table does not exist. Please create it in Supabase dashboard.');
+                    showToast('⚠️ Please create "bookings" table in Supabase', true);
+                    return false;
+                }
+                
+                bookingsTableReady = true;
+                console.log('✅ Supabase connected successfully');
+                return true;
+            } catch (e) {
+                console.error('Supabase connection error:', e);
+                showToast('⚠️ Supabase connection failed. Using local storage.', true);
+                return false;
             }
+        }
+        
+        // Initialize EmailJS
+        function initEmailJS() {
+            if (EMAILJS_PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY') {
+                emailjs.init(EMAILJS_PUBLIC_KEY);
+                console.log('✅ EmailJS initialized');
+                return true;
+            } else {
+                console.warn('⚠️ EmailJS not configured. Emails will not be sent automatically.');
+                return false;
+            }
+        }
+        
+        // Send automatic emails via EmailJS
+        async function sendEmails(clientName, clientEmail, date, timeSlot, note) {
+            if (EMAILJS_PUBLIC_KEY === 'YOUR_EMAILJS_PUBLIC_KEY') {
+                console.warn('EmailJS not configured — skipping email notifications');
+                return false;
+            }
+            
+            try {
+                // Email to admin
+                const adminParams = {
+                    to_email: ADMIN_EMAIL,
+                    client_name: clientName,
+                    client_email: clientEmail,
+                    booking_date: date,
+                    booking_time: timeSlot,
+                    booking_note: note || 'Not provided',
+                    booking_url: window.location.href
+                };
+                
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, adminParams);
+                
+                // Email to client (using same template with different recipient)
+                const clientParams = {
+                    to_email: clientEmail,
+                    client_name: clientName,
+                    booking_date: date,
+                    booking_time: timeSlot,
+                    booking_note: note || 'Not provided'
+                };
+                
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, clientParams);
+                
+                console.log('✅ Emails sent successfully');
+                return true;
+            } catch (error) {
+                console.error('Failed to send emails:', error);
+                return false;
+            }
+        }
+        
+        // ========== BOOKING SYSTEM ==========
+        const SLOT_DURATION = 30;
+        const DAY_START = 0;
+        const DAY_END = 23;
+        
+        function generateTimeSlots() {
+            const slots = [];
+            for (let hour = DAY_START; hour <= DAY_END; hour++) {
+                for (let minute = 0; minute < 60; minute += SLOT_DURATION) {
+                    if (hour === DAY_END && minute > 0) continue;
+                    const timeStr = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+                    slots.push(timeStr);
+                }
+            }
+            return slots;
+        }
+        
+        const ALL_SLOTS = generateTimeSlots();
+        const STORAGE_KEY = 'adam2solutions_bookings';
+        
+        async function loadBookings() {
+            if (supabase && bookingsTableReady) {
+                const { data, error } = await supabase
+                    .from('bookings')
+                    .select('*');
+                
+                if (error) {
+                    console.error('Error loading bookings:', error);
+                    return loadLocalBookings();
+                }
+                
+                const bookings = {};
+                data.forEach(booking => {
+                    const key = `${booking.date}|${booking.time_slot}`;
+                    bookings[key] = {
+                        name: booking.client_name,
+                        email: booking.client_email,
+                        note: booking.note || '',
+                        bookedAt: booking.created_at,
+                        slot: booking.time_slot,
+                        date: booking.date
+                    };
+                });
+                return bookings;
+            }
+            return loadLocalBookings();
+        }
+        
+        function loadLocalBookings() {
+            const data = localStorage.getItem(STORAGE_KEY);
+            if (!data) return {};
+            try { return JSON.parse(data); }
+            catch(e) { return {}; }
+        }
+        
+        async function saveBookingToSupabase(date, timeSlot, name, email, note) {
+            if (supabase && bookingsTableReady) {
+                const { error } = await supabase
+                    .from('bookings')
+                    .insert([
+                        {
+                            date: date,
+                            time_slot: timeSlot,
+                            client_name: name,
+                            client_email: email,
+                            note: note || '',
+                            created_at: new Date().toISOString()
+                        }
+                    ]);
+                
+                if (error) {
+                    console.error('Error saving to Supabase:', error);
+                    return false;
+                }
+                return true;
+            }
+            return false;
+        }
+        
+        async function addBooking(date, timeSlot, name, email, note) {
+            // Check if slot is already booked
+            const bookings = await loadBookings();
+            const key = `${date}|${timeSlot}`;
+            if (bookings[key]) return false;
+            
+            // Save to Supabase
+            const saved = await saveBookingToSupabase(date, timeSlot, name, email, note);
+            
+            if (!saved) {
+                // Fallback to localStorage
+                const localBookings = loadLocalBookings();
+                if (localBookings[key]) return false;
+                localBookings[key] = {
+                    name: name,
+                    email: email,
+                    note: note || '',
+                    bookedAt: new Date().toISOString(),
+                    slot: timeSlot,
+                    date: date
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(localBookings));
+            }
+            
+            // Send automatic emails
+            const emailsSent = await sendEmails(name, email, date, timeSlot, note);
+            if (!emailsSent) {
+                console.warn('Email notifications failed, but booking was saved');
+            }
+            
+            return true;
+        }
+        
+        // UI Variables
+        let selectedDate = null;
+        let selectedSlot = null;
+        let currentBookings = {};
+        
+        async function refreshBookings() {
+            currentBookings = await loadBookings();
+            updateSlotDropdown();
+        }
+        
+        function updateSlotDropdown() {
+            if (!selectedDate) return;
+            
+            const dropdown = document.getElementById('slotDropdown');
+            const today = new Date().toISOString().split('T')[0];
+            const now = new Date();
+            const currentTimeStr = `${now.getUTCHours().toString().padStart(2, '0')}:${now.getUTCMinutes().toString().padStart(2, '0')}`;
+            
+            dropdown.innerHTML = '<option value="">-- Select a time (GMT) --</option>';
+            
+            ALL_SLOTS.forEach(slot => {
+                const isBooked = currentBookings[`${selectedDate}|${slot}`];
+                const isPast = selectedDate === today && slot < currentTimeStr;
+                const option = document.createElement('option');
+                option.value = slot;
+                option.textContent = `${slot} GMT ${isBooked ? '❌ BOOKED' : isPast ? '⏰ PAST' : '✅ OPEN'}`;
+                
+                if (isBooked || isPast) {
+                    option.disabled = true;
+                    option.style.color = '#F87171';
+                }
+                
+                dropdown.appendChild(option);
+            });
+        }
+        
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.background = isError ? 'rgba(239, 68, 68, 0.95)' : 'rgba(34, 197, 94, 0.95)';
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
         }
-
-        // ========== SCHEDULE NOW BUTTON ==========
-        // 🔴 IMPORTANT: Replace this URL with your actual Calendly link
-        // Sign up for free at calendly.com, then paste your link below
-       https://calendly.com/synced2pss/30min
         
-        const scheduleBtn = document.getElementById('scheduleBtn');
-        scheduleBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            if (YOUR_CALENDLY_URL === 'https://calendly.com/yourusername/20min') {
-                // If you haven't set your Calendly link yet
-                showToast('⚠️ Please set your Calendly link in the script (line ~380)', true);
-                console.warn('AppleGen‑Executive: Update YOUR_CALENDLY_URL with your actual Calendly link');
+        // Initialize
+        const datePicker = document.getElementById('datePicker');
+        const today = new Date().toISOString().split('T')[0];
+        datePicker.value = today;
+        datePicker.min = today;
+        selectedDate = today;
+        
+        initSupabase().then(() => {
+            refreshBookings();
+        });
+        initEmailJS();
+        
+        datePicker.addEventListener('change', async (e) => {
+            selectedDate = e.target.value;
+            selectedSlot = null;
+            await refreshBookings();
+            document.getElementById('bookingForm').classList.remove('visible');
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientEmail').value = '';
+            document.getElementById('clientNote').value = '';
+        });
+        
+        const slotDropdown = document.getElementById('slotDropdown');
+        slotDropdown.addEventListener('change', (e) => {
+            selectedSlot = e.target.value;
+            if (selectedSlot) {
+                const form = document.getElementById('bookingForm');
+                form.classList.add('visible');
+                form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } else {
-                showToast('📅 Opening calendar — redirecting you now');
-                setTimeout(() => {
-                    window.open(YOUR_CALENDLY_URL, '_blank');
-                }, 500);
+                document.getElementById('bookingForm').classList.remove('visible');
             }
         });
-
-        // ========== COPY EMAIL BUTTON ==========
-        const copyBtn = document.getElementById('copyEmailBtn');
-        const emailAddress = 'connect@applegen.com'; // Same as the mailto link
         
-        copyBtn.addEventListener('click', async () => {
-            try {
-                await navigator.clipboard.writeText(emailAddress);
-                showToast('📧 Email copied to clipboard — we look forward to hearing from you');
-                
-                // Visual feedback on button
-                const originalText = copyBtn.innerHTML;
-                copyBtn.innerHTML = '✓ Copied!';
-                setTimeout(() => {
-                    copyBtn.innerHTML = originalText;
-                }, 2000);
-            } catch (err) {
-                showToast('❌ Could not copy — please copy manually', true);
+        document.getElementById('confirmBookingBtn').addEventListener('click', async () => {
+            if (!selectedDate || !selectedSlot) {
+                showToast('Please select a date and time first', true);
+                return;
+            }
+            
+            const name = document.getElementById('clientName').value.trim();
+            const email = document.getElementById('clientEmail').value.trim();
+            const note = document.getElementById('clientNote').value.trim();
+            
+            if (!name || !email) {
+                showToast('Please enter your name and email', true);
+                return;
+            }
+            
+            if (!email.includes('@')) {
+                showToast('Please enter a valid email address', true);
+                return;
+            }
+            
+            // Double-check availability
+            const freshBookings = await loadBookings();
+            if (freshBookings[`${selectedDate}|${selectedSlot}`]) {
+                showToast('This slot was just taken — please choose another', true);
+                await refreshBookings();
+                document.getElementById('bookingForm').classList.remove('visible');
+                selectedSlot = null;
+                slotDropdown.value = '';
+                return;
+            }
+            
+            const success = await addBooking(selectedDate, selectedSlot, name, email, note);
+            if (success) {
+                showToast(`✅ Booking confirmed! You'll receive a confirmation email shortly.`);
+                document.getElementById('clientName').value = '';
+                document.getElementById('clientEmail').value = '';
+                document.getElementById('clientNote').value = '';
+                document.getElementById('bookingForm').classList.remove('visible');
+                await refreshBookings();
+                slotDropdown.value = '';
+                selectedSlot = null;
+            } else {
+                showToast('Something went wrong. Please try again.', true);
             }
         });
-
-        // Optional: Add a subtle effect when email link is clicked
-        const emailLink = document.querySelector('.email-link a');
-        emailLink.addEventListener('click', (e) => {
-            // Let mailto work normally, add a small confirmation
-            setTimeout(() => {
-                showToast('✉️ Email client opened — we respond within 2 hours');
-            }, 100);
+        
+        // ========== ADMIN SYSTEM ==========
+        let clickCount = 0;
+        let clickTimer = null;
+        let isAdminMode = false;
+        const adminPanel = document.getElementById('adminPanel');
+        const secretTrigger = document.getElementById('secretAdminTrigger');
+        const ADMIN_PASSWORD = 'Adam2Solutions2026';
+        
+        secretTrigger.addEventListener('click', () => {
+            clickCount++;
+            clearTimeout(clickTimer);
+            if (clickCount === 5) {
+                const password = prompt('🔐 ADMIN ACCESS\n\nEnter password to unlock admin panel:');
+                if (password === ADMIN_PASSWORD) {
+                    isAdminMode = true;
+                    adminPanel.classList.add('visible');
+                    showToast('✅ Admin mode enabled');
+                } else if (password !== null) {
+                    showToast('❌ Incorrect password', true);
+                }
+                clickCount = 0;
+            } else {
+                clickTimer = setTimeout(() => {
+                    clickCount = 0;
+                }, 800);
+            }
         });
-
-        console.log('🍎 AppleGen‑Executive | Ready for partnerships');
+        
+        document.getElementById('logoutAdminBtn')?.addEventListener('click', () => {
+            isAdminMode = false;
+            adminPanel.classList.remove('visible');
+            showToast('🔒 Admin mode disabled');
+        });
+        
+        document.getElementById('historyBtn')?.addEventListener('click', async () => {
+            if (!isAdminMode) { showToast('Admin mode required', true); return; }
+            const bookings = await loadBookings();
+            const bookingList = Object.entries(bookings);
+            if (bookingList.length === 0) {
+                alert('📭 No bookings yet');
+                return;
+            }
+            let message = `📋 ADAM2SOLUTIONS — ${bookingList.length} booking(s)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+            bookingList.forEach(([key, b], i) => {
+                const [date, slot] = key.split('|');
+                message += `${i+1}. ${b.name}\n   📧 ${b.email}\n   📅 ${date} at ${slot} GMT\n   📝 ${b.note || '—'}\n   🕐 ${new Date(b.bookedAt).toLocaleString()}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+            });
+            alert(message);
+        });
+        
+        document.getElementById('exportBtn')?.addEventListener('click', async () => {
+            if (!isAdminMode) { showToast('Admin mode required', true); return; }
+            const bookings = await loadBookings();
+            const bookingList = Object.entries(bookings);
+            if (bookingList.length === 0) { showToast('No bookings to export', true); return; }
+            const headers = ['Date', 'Time (GMT)', 'Name', 'Email', 'Note', 'Booked At'];
+            const rows = bookingList.map(([key, b]) => {
+                const [date, slot] = key.split('|');
+                return [date, slot, b.name, b.email, b.note, new Date(b.bookedAt).toLocaleString()];
+            });
+            const csvContent = [headers, ...rows].map(row => row.join(',')).join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `adam2solutions_bookings_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast(`📥 Exported ${bookingList.length} booking(s)`);
+        });
+        
+        document.getElementById('clearBookingsBtn')?.addEventListener('click', async () => {
+            if (!isAdminMode) { showToast('Admin mode required', true); return; }
+            if (confirm('⚠️ PERMANENT: Delete ALL bookings? This cannot be undone.')) {
+                if (supabase && bookingsTableReady) {
+                    const { error } = await supabase.from('bookings').delete().neq('id', 0);
+                    if (error) console.error('Error clearing:', error);
+                }
+                localStorage.removeItem(STORAGE_KEY);
+                await refreshBookings();
+                showToast('🗑️ All bookings deleted');
+            }
+        });
+        
+        document.getElementById('copyEmailBtn')?.addEventListener('click', async () => {
+            await navigator.clipboard.writeText('hello@adam2solutions.com');
+            showToast('📧 Email copied');
+        });
+        
+        console.log('🍎 Adam2Solutions | Supabase connected | Admin: 5 clicks on logo');
     </script>
 </body>
 </html>
