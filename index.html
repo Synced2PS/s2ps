@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Enquire right here</title>
+    <meta name="description" content="AppleGen‑Executive — strategic execution and high‑leverage partnerships for global leaders.">
+    <title>AppleGen‑Executive | Direct Access</title>
     <style>
         * {
             margin: 0;
@@ -12,8 +13,8 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background: #05070A;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -22,388 +23,607 @@
             position: relative;
         }
 
-        /* decorative animated background shapes */
+        /* animated gradient background */
         body::before {
             content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            top: 10%;
-            left: -100px;
-            filter: blur(60px);
-        }
-
-        body::after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 50%;
-            bottom: 10%;
-            right: -100px;
-            filter: blur(80px);
-        }
-
-        .card {
-            max-width: 580px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.97);
-            backdrop-filter: blur(0px);
-            border-radius: 2.5rem;
-            padding: 2.2rem 2rem 2.8rem;
-            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.3);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 40px 70px -20px rgba(0, 0, 0, 0.5);
-        }
-
-        /* custom avatar with gradient border */
-        .avatar-wrapper {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1.2rem;
-            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-            border-radius: 50%;
-            padding: 4px;
-        }
-
-        .avatar {
-            width: 100%;
-            height: 100%;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.2rem;
-            font-weight: 600;
-            background: linear-gradient(145deg, #fff, #f8f9ff);
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 0.3rem;
-            letter-spacing: -0.5px;
-        }
-
-        .tagline {
-            color: #5a4b6e;
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
-            font-weight: 500;
-            background: #f0eef7;
-            display: inline-block;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
-        }
-
-        .bio {
-            color: #4a3a5e;
-            font-size: 0.9rem;
-            margin-bottom: 1.8rem;
-            max-width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.4;
-        }
-
-        .social-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-            margin: 1.5rem 0 2rem;
-        }
-
-        /* platform-specific gradient hover effects */
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #ffffff;
-            padding: 0.9rem 1.3rem;
-            border-radius: 80px;
-            text-decoration: none;
-            color: #1e1a2f;
-            font-weight: 600;
-            transition: all 0.25s;
-            border: 1px solid #e9e3f0;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.02);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-link::before {
-            content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
-            transform: translateX(-100%);
-            transition: transform 0.4s ease;
+            background: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.2), transparent 55%),
+                        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.12), transparent 60%),
+                        radial-gradient(circle at 40% 90%, rgba(236, 72, 153, 0.08), transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+            animation: slowPulse 8s ease-in-out infinite;
         }
 
-        .social-link:hover::before {
-            transform: translateX(100%);
+        @keyframes slowPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
         }
 
-        .social-link:hover {
-            transform: translateX(8px) scale(1.01);
-            border-color: transparent;
+        .card {
+            max-width: 780px;
+            width: 100%;
+            background: rgba(8, 10, 16, 0.92);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+            box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.02);
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
         }
 
-        /* instagram brand */
-        .social-link.instagram:hover {
-            background: linear-gradient(45deg, #f09433, #d62976, #962fbf);
-            color: white;
-            box-shadow: 0 12px 20px -12px #d6297680;
-        }
-        /* twitter brand */
-        .social-link.twitter:hover {
-            background: #1DA1F2;
-            color: white;
-            box-shadow: 0 12px 20px -12px #1DA1F2;
-        }
-        /* discord brand */
-        .social-link.discord:hover {
-            background: #5865F2;
-            color: white;
-            box-shadow: 0 12px 20px -12px #5865F2;
-        }
-        /* snapchat brand */
-        .social-link.snapchat:hover {
-            background: #FFFC00;
-            color: #1a1a1a;
-            box-shadow: 0 12px 20px -12px #FFFC00;
-        }
-        /* youtube brand */
-        .social-link.youtube:hover {
-            background: #FF0000;
-            color: white;
-            box-shadow: 0 12px 20px -12px #FF0000;
-        }
-        /* tiktok brand */
-        .social-link.tiktok:hover {
-            background: #000000;
-            color: white;
-            box-shadow: 0 12px 20px -12px #000000;
+        .card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 35px 55px -20px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(139, 92, 246, 0.1);
         }
 
-        .social-left {
+        /* animated accent line */
+        .accent-line {
+            height: 3px;
+            background: linear-gradient(90deg, #8B5CF6, #3B82F6, #EC4899, #8B5CF6);
+            background-size: 300% 100%;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .content {
+            padding: 2.8rem 2.5rem 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* brand header */
+        .brand {
             display: flex;
+            justify-content: space-between;
             align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
             gap: 1rem;
         }
 
-        .social-icon {
-            font-size: 1.7rem;
-            width: 32px;
-            text-align: center;
-        }
-
-        .social-name {
-            font-size: 1rem;
-            letter-spacing: -0.2px;
-        }
-
-        .arrow {
+        .logo {
             font-size: 1.2rem;
-            transition: transform 0.2s;
-            opacity: 0.7;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #FFFFFF, #A5B4FC, #C4B5FD);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .social-link:hover .arrow {
-            transform: translateX(5px);
-            opacity: 1;
+        .logo::before {
+            content: '🍎';
+            font-size: 1.1rem;
+            background: none;
+            -webkit-background-clip: unset;
+            color: #A78BFA;
         }
 
-        .contact-email {
-            margin-top: 1rem;
-            background: linear-gradient(135deg, #f5f0ff, #ede7f6);
-            border-radius: 60px;
-            padding: 0.9rem 1rem;
-            font-size: 0.9rem;
-            color: #2d2440;
+        .enquire-badge {
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            padding: 0.4rem 1.2rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #A78BFA;
+            text-transform: uppercase;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .enquire-badge:hover {
+            background: rgba(139, 92, 246, 0.25);
+            border-color: #8B5CF6;
+            letter-spacing: 1.5px;
+        }
+
+        /* headline */
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #C4B5FD 70%, #A78BFA 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #9CA3AF;
+            line-height: 1.5;
+            margin-bottom: 2.2rem;
+            max-width: 90%;
+            border-left: 2px solid #8B5CF6;
+            padding-left: 1.2rem;
+        }
+
+        /* 3x2 grid for exactly 6 buttons */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 1.2rem;
+            padding: 1.1rem 1.2rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* subtle shine effect on hover */
+        .contact-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-item:hover::after {
+            left: 100%;
+        }
+
+        .contact-item:hover {
+            background: rgba(139, 92, 246, 0.08);
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .icon-bg {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            border: 1px solid #ddd0f0;
-            font-weight: 500;
+            font-size: 1.3rem;
+            transition: 0.2s;
         }
 
-        .contact-email a {
-            color: #764ba2;
+        .contact-item:hover .icon-bg {
+            background: rgba(139, 92, 246, 0.15);
+            transform: scale(1.05);
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: #6B7280;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-value {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #E5E7EB;
+            word-break: break-word;
+        }
+
+        .arrow {
+            color: #4B5563;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        .contact-item:hover .arrow {
+            transform: translateX(4px);
+            color: #A78BFA;
+        }
+
+        /* scheduling section — single button now */
+        .schedule-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(59, 130, 246, 0.04) 100%);
+            border-radius: 1.5rem;
+            padding: 1.3rem 1.5rem;
+            margin: 1.2rem 0 1.5rem;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        .schedule-section:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(59, 130, 246, 0.06) 100%);
+        }
+
+        .schedule-text h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 0.2rem;
+        }
+
+        .schedule-text p {
+            font-size: 0.75rem;
+            color: #9CA3AF;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #8B5CF6, #6366F1);
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 2rem;
             text-decoration: none;
-            font-weight: 700;
-            word-break: break-all;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #7C3AED, #4F46E5);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        /* footer with email and copy button */
+        .footer-note {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.7rem;
+            color: #6B7280;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .email-footer {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .email-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .email-link a {
+            color: #A78BFA;
+            text-decoration: none;
+            font-weight: 500;
             transition: color 0.2s;
         }
 
-        .contact-email a:hover {
-            color: #4a2c73;
+        .email-link a:hover {
+            color: #C4B5FD;
             text-decoration: underline;
         }
 
-        /* custom status badge */
-        .status-badge {
-            background: #e6f7e6;
-            color: #2e7d32;
+        .copy-btn {
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            padding: 0.25rem 0.75rem;
             border-radius: 40px;
-            padding: 0.2rem 1rem;
-            font-size: 0.7rem;
-            font-weight: 600;
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: #A78BFA;
+            cursor: pointer;
+            transition: all 0.2s;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            margin-top: 1rem;
+            gap: 0.3rem;
         }
 
-        .status-badge span {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #2e7d32;
+        .copy-btn:hover {
+            background: rgba(139, 92, 246, 0.3);
+            border-color: #8B5CF6;
+            color: white;
+            transform: scale(0.98);
+        }
+
+        .badge-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .badge-group span {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.2rem 0.7rem;
+            border-radius: 40px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
             border-radius: 50%;
-            animation: pulse 1.5s infinite;
+            display: inline-block;
+            animation: blink 1.5s infinite;
+            margin-right: 4px;
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.4; transform: scale(0.8);}
-            100% { opacity: 1; transform: scale(1.2);}
+        /* toast notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(139, 92, 246, 0.95);
+            backdrop-filter: blur(12px);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+            pointer-events: none;
+            white-space: nowrap;
         }
 
-        footer {
-            margin-top: 1.8rem;
-            font-size: 0.7rem;
-            color: #8a7a9e;
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
         }
 
-        hr {
-            margin: 1rem 0 0.5rem;
-            border: 0;
-            height: 1px;
-            background: linear-gradient(to right, transparent, #d9cce8, transparent);
-        }
-
-        @media (max-width: 480px) {
-            .card {
-                padding: 1.5rem;
-            }
-            .social-link {
-                padding: 0.7rem 1rem;
-            }
-            .bio {
-                max-width: 95%;
+        @media (max-width: 640px) {
+            .content {
+                padding: 1.6rem;
             }
             h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 0.7rem;
+            }
+            .description {
+                max-width: 100%;
+            }
+            .schedule-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .brand {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .footer-note {
+                flex-direction: column;
+                text-align: center;
+            }
+            .toast {
+                white-space: normal;
+                text-align: center;
+                max-width: 85%;
             }
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <!-- Avatar with gradient ring -->
-        <div class="avatar-wrapper">
-            <div class="avatar">
-                🌟
+        <div class="accent-line"></div>
+        <div class="content">
+            <div class="brand">
+                <div class="logo">APPLEGEN‑EXECUTIVE</div>
+                <div class="enquire-badge">✦ ENQUIRE NOW</div>
+            </div>
+
+            <h1>Direct executive access.</h1>
+            <div class="description">
+                High‑leverage partnerships, strategic execution, and global deployment for ambitious leaders.
+            </div>
+
+            <div class="contact-grid">
+                <a href="https://twitter.com/APPLEGEN_EXEC" class="contact-item" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-bg">𝕏</div>
+                    <div class="contact-details">
+                        <div class="contact-label">X (Twitter)</div>
+                        <div class="contact-value">@APPLEGEN_EXEC</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </a>
+
+                <a href="https://instagram.com/applegen_executive" class="contact-item" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-bg">📷</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Instagram</div>
+                        <div class="contact-value">@applegen_executive</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </a>
+
+                <a href="https://discord.gg/applegen" class="contact-item" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-bg">🎧</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Discord</div>
+                        <div class="contact-value">Join server / DM</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </a>
+
+                <a href="https://snapchat.com/add/applegen_exec" class="contact-item" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-bg">👻</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Snapchat</div>
+                        <div class="contact-value">@applegen_exec</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </a>
+
+                <a href="https://wa.me/14155551234" class="contact-item" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-bg">📱</div>
+                    <div class="contact-details">
+                        <div class="contact-label">WhatsApp</div>
+                        <div class="contact-value">+1 (415) 555-1234</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </a>
+
+                <a href="https://t.me/applegen_exec" class="contact-item" target="_blank" rel="noopener noreferrer">
+                    <div class="icon-bg">📨</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Telegram</div>
+                        <div class="contact-value">@applegen_exec</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </a>
+            </div>
+
+            <div class="schedule-section">
+                <div class="schedule-text">
+                    <h4>🎯 Strategic alignment call</h4>
+                    <p>20 minutes • roadmap discussion • no obligation</p>
+                </div>
+                <a href="#" class="btn" id="scheduleBtn">📅 Schedule now</a>
+            </div>
+
+            <div class="footer-note">
+                <div class="email-footer">
+                    <div class="email-link">
+                        ✉️ <a href="mailto:connect@applegen.com" id="emailAddress">connect@applegen.com</a>
+                    </div>
+                    <button class="copy-btn" id="copyEmailBtn">📋 Copy email</button>
+                </div>
+                <div class="badge-group">
+                    <span><span class="live-dot"></span> 24/7 team active response</span>
+                    <span>🌍 LDN / DXB / GLOBAL</span>
+                </div>
             </div>
         </div>
-
-        <h1>AppleCode-Gen</h1>
-        <div class="tagline">Entrepreneur</div>
-        <div class="bio">
-              • Enquire Now •  
-        </div>
-
-        <div class="social-grid">
-            <!-- Instagram -->
-            <a href="https://instagram.com/YOUR_USERNAME" class="social-link instagram" target="_blank" rel="noopener noreferrer">
-                <div class="social-left">
-                    <span class="social-icon">📸</span>
-                    <span class="social-name">Instagram</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <!-- Twitter / X -->
-            <a href="https://twitter.com/YOUR_USERNAME" class="social-link twitter" target="_blank" rel="noopener noreferrer">
-                <div class="social-left">
-                    <span class="social-icon">🐦</span>
-                    <span class="social-name">X (Twitter)</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <!-- Discord (new) -->
-            <a href="https://discord.gg/YOUR_INVITE_CODE" class="social-link discord" target="_blank" rel="noopener noreferrer">
-                <div class="social-left">
-                    <span class="social-icon">🎮</span>
-                    <span class="social-name">Discord</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <!-- Snapchat (new) -->
-            <a href="https://snapchat.com/add/YOUR_USERNAME" class="social-link snapchat" target="_blank" rel="noopener noreferrer">
-                <div class="social-left">
-                    <span class="social-icon">👻</span>
-                    <span class="social-name">Snapchat</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <!-- TikTok -->
-            <a href="https://tiktok.com/@YOUR_USERNAME" class="social-link tiktok" target="_blank" rel="noopener noreferrer">
-                <div class="social-left">
-                    <span class="social-icon">🎵</span>
-                    <span class="social-name">TikTok</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <!-- YouTube -->
-            <a href="https://youtube.com/@YOUR_USERNAME" class="social-link youtube" target="_blank" rel="noopener noreferrer">
-                <div class="social-left">
-                    <span class="social-icon">📺</span>
-                    <span class="social-name">YouTube</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-        </div>
-
-        <!-- Email contact (kept for professionalism) -->
-        <div class="contact-email">
-            <span>✉️</span>
-            <a href="mailto:hello@alexmorgan.com">hello@applegen.com</a>
-        </div>
-
-        <!-- live status badge (fun personal touch) -->
-        <div class="status-badge">
-            <span></span> active daily • replies within 24h
-        </div>
-
-        <hr>
-        <footer>
-            💬 Email Me - @applegen 
-        </footer>
     </div>
+
+    <!-- toast notification element -->
+    <div id="toast" class="toast">✨ Message</div>
+
+    <script>
+        const toast = document.getElementById('toast');
+
+        function showToast(message, isError = false) {
+            toast.textContent = message;
+            if (isError) {
+                toast.style.background = 'rgba(239, 68, 68, 0.95)';
+            } else {
+                toast.style.background = 'rgba(139, 92, 246, 0.95)';
+            }
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ========== SCHEDULE NOW BUTTON ==========
+        // 🔴 IMPORTANT: Replace this URL with your actual Calendly link
+        // Sign up for free at calendly.com, then paste your link below
+        const YOUR_CALENDLY_URL = 'https://calendly.com/yourusername/20min';
+        
+        const scheduleBtn = document.getElementById('scheduleBtn');
+        scheduleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (YOUR_CALENDLY_URL === 'https://calendly.com/yourusername/20min') {
+                // If you haven't set your Calendly link yet
+                showToast('⚠️ Please set your Calendly link in the script (line ~380)', true);
+                console.warn('AppleGen‑Executive: Update YOUR_CALENDLY_URL with your actual Calendly link');
+            } else {
+                showToast('📅 Opening calendar — redirecting you now');
+                setTimeout(() => {
+                    window.open(YOUR_CALENDLY_URL, '_blank');
+                }, 500);
+            }
+        });
+
+        // ========== COPY EMAIL BUTTON ==========
+        const copyBtn = document.getElementById('copyEmailBtn');
+        const emailAddress = 'connect@applegen.com'; // Same as the mailto link
+        
+        copyBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(emailAddress);
+                showToast('📧 Email copied to clipboard — we look forward to hearing from you');
+                
+                // Visual feedback on button
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '✓ Copied!';
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                }, 2000);
+            } catch (err) {
+                showToast('❌ Could not copy — please copy manually', true);
+            }
+        });
+
+        // Optional: Add a subtle effect when email link is clicked
+        const emailLink = document.querySelector('.email-link a');
+        emailLink.addEventListener('click', (e) => {
+            // Let mailto work normally, add a small confirmation
+            setTimeout(() => {
+                showToast('✉️ Email client opened — we respond within 2 hours');
+            }, 100);
+        });
+
+        console.log('🍎 AppleGen‑Executive | Ready for partnerships');
+    </script>
 </body>
 </html>
