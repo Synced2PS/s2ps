@@ -484,7 +484,7 @@
 
             <div class="footer-note">
                 <div class="email-footer">
-                    ✉️ <a href="mailto:hello@adam2solutions.com">support@adam2solutions.com</a>
+                    ✉️ <a href="mailto:hello@adam2solutions.com">hello@adam2solutions.com</a>
                     <button class="copy-btn" id="copyEmailBtn">Copy</button>
                 </div>
                 <div class="badge-group">
@@ -498,103 +498,10 @@
     <div id="toast" class="toast"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         // ========== SUPABASE CONFIGURATION ==========
         const SUPABASE_URL = 'https://helthkywdrchrtujyfvk.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_fNvFWWCW0V0kpkkPKhCOKg_oM7oEoCN';
-        
-        // ========== EMAILJS CONFIGURATION ==========
-        // 🔴 IMPORTANT: You need to set up EmailJS (free) for automatic emails
-        // Step 1: Go to https://www.emailjs.com and sign up (free)
-        // Step 2: Create an email service (Gmail, Outlook, etc.)
-        // Step 3: Create an email template
-        // Step 4: Get your Public Key from Account > API Keys
-        const EMAILJS_PUBLIC_KEY = 'YOUR_EMAILJS_PUBLIC_KEY'; // Get from EmailJS dashboard
-        const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'; // Create in EmailJS
-        const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // Create in EmailJS
-        const ADMIN_EMAIL = 'hello@adam2solutions.com';
-        
-        // Initialize Supabase
-        let supabase;
-        let bookingsTableReady = false;
-        
-        async function initSupabase() {
-            try {
-                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-                
-                // Test connection
-                const { error } = await supabase
-                    .from('bookings')
-                    .select('count', { count: 'exact', head: true });
-                
-                if (error && error.message.includes('relation') && error.message.includes('does not exist')) {
-                    console.error('❌ Bookings table does not exist. Please create it in Supabase dashboard.');
-                    showToast('⚠️ Please create "bookings" table in Supabase', true);
-                    return false;
-                }
-                
-                bookingsTableReady = true;
-                console.log('✅ Supabase connected successfully');
-                return true;
-            } catch (e) {
-                console.error('Supabase connection error:', e);
-                showToast('⚠️ Supabase connection failed. Using local storage.', true);
-                return false;
-            }
-        }
-        
-        // Initialize EmailJS
-        function initEmailJS() {
-            if (EMAILJS_PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY') {
-                emailjs.init(EMAILJS_PUBLIC_KEY);
-                console.log('✅ EmailJS initialized');
-                return true;
-            } else {
-                console.warn('⚠️ EmailJS not configured. Emails will not be sent automatically.');
-                return false;
-            }
-        }
-        
-        // Send automatic emails via EmailJS
-        async function sendEmails(clientName, clientEmail, date, timeSlot, note) {
-            if (EMAILJS_PUBLIC_KEY === 'YOUR_EMAILJS_PUBLIC_KEY') {
-                console.warn('EmailJS not configured — skipping email notifications');
-                return false;
-            }
-            
-            try {
-                // Email to admin
-                const adminParams = {
-                    to_email: ADMIN_EMAIL,
-                    client_name: clientName,
-                    client_email: clientEmail,
-                    booking_date: date,
-                    booking_time: timeSlot,
-                    booking_note: note || 'Not provided',
-                    booking_url: window.location.href
-                };
-                
-                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, adminParams);
-                
-                // Email to client (using same template with different recipient)
-                const clientParams = {
-                    to_email: clientEmail,
-                    client_name: clientName,
-                    booking_date: date,
-                    booking_time: timeSlot,
-                    booking_note: note || 'Not provided'
-                };
-                
-                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, clientParams);
-                
-                console.log('✅ Emails sent successfully');
-                return true;
-            } catch (error) {
-                console.error('Failed to send emails:', error);
-                return false;
-            }
-        }
         
         // ========== BOOKING SYSTEM ==========
         const SLOT_DURATION = 30;
@@ -616,30 +523,45 @@
         const ALL_SLOTS = generateTimeSlots();
         const STORAGE_KEY = 'adam2solutions_bookings';
         
+        let supabase = null;
+        let bookingsTableReady = false;
+        let currentBookings = {};
+        let selectedDate = null;
+        let selectedSlot = null;
+        
+        // Load bookings from Supabase or localStorage
         async function loadBookings() {
+            // If Supabase is connected and table exists, use it
             if (supabase && bookingsTableReady) {
-                const { data, error } = await supabase
-                    .from('bookings')
-                    .select('*');
-                
-                if (error) {
-                    console.error('Error loading bookings:', error);
+                try {
+                    const { data, error } = await supabase
+                        .from('bookings')
+                        .select('*');
+                    
+                    if (error) {
+                        console.error('Supabase error:', error);
+                        return loadLocalBookings();
+                    }
+                    
+                    const bookings = {};
+                    if (data) {
+                        data.forEach(booking => {
+                            const key = `${booking.date}|${booking.time_slot}`;
+                            bookings[key] = {
+                                name: booking.client_name,
+                                email: booking.client_email,
+                                note: booking.note || '',
+                                bookedAt: booking.created_at,
+                                slot: booking.time_slot,
+                                date: booking.date
+                            };
+                        });
+                    }
+                    return bookings;
+                } catch (e) {
+                    console.error('Error loading from Supabase:', e);
                     return loadLocalBookings();
                 }
-                
-                const bookings = {};
-                data.forEach(booking => {
-                    const key = `${booking.date}|${booking.time_slot}`;
-                    bookings[key] = {
-                        name: booking.client_name,
-                        email: booking.client_email,
-                        note: booking.note || '',
-                        bookedAt: booking.created_at,
-                        slot: booking.time_slot,
-                        date: booking.date
-                    };
-                });
-                return bookings;
             }
             return loadLocalBookings();
         }
@@ -653,24 +575,29 @@
         
         async function saveBookingToSupabase(date, timeSlot, name, email, note) {
             if (supabase && bookingsTableReady) {
-                const { error } = await supabase
-                    .from('bookings')
-                    .insert([
-                        {
-                            date: date,
-                            time_slot: timeSlot,
-                            client_name: name,
-                            client_email: email,
-                            note: note || '',
-                            created_at: new Date().toISOString()
-                        }
-                    ]);
-                
-                if (error) {
-                    console.error('Error saving to Supabase:', error);
+                try {
+                    const { error } = await supabase
+                        .from('bookings')
+                        .insert([
+                            {
+                                date: date,
+                                time_slot: timeSlot,
+                                client_name: name,
+                                client_email: email,
+                                note: note || '',
+                                created_at: new Date().toISOString()
+                            }
+                        ]);
+                    
+                    if (error) {
+                        console.error('Error saving to Supabase:', error);
+                        return false;
+                    }
+                    return true;
+                } catch (e) {
+                    console.error('Exception saving to Supabase:', e);
                     return false;
                 }
-                return true;
             }
             return false;
         }
@@ -681,7 +608,7 @@
             const key = `${date}|${timeSlot}`;
             if (bookings[key]) return false;
             
-            // Save to Supabase
+            // Try Supabase first
             const saved = await saveBookingToSupabase(date, timeSlot, name, email, note);
             
             if (!saved) {
@@ -699,29 +626,62 @@
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(localBookings));
             }
             
-            // Send automatic emails
-            const emailsSent = await sendEmails(name, email, date, timeSlot, note);
-            if (!emailsSent) {
-                console.warn('Email notifications failed, but booking was saved');
-            }
+            // Send email notification via mailto (automatic)
+            sendEmailNotifications(name, email, date, timeSlot, note);
             
             return true;
         }
         
-        // UI Variables
-        let selectedDate = null;
-        let selectedSlot = null;
-        let currentBookings = {};
-        
-        async function refreshBookings() {
-            currentBookings = await loadBookings();
-            updateSlotDropdown();
+        function sendEmailNotifications(clientName, clientEmail, date, timeSlot, note) {
+            // Email to admin
+            const adminSubject = `📅 New Booking: ${clientName} - ${date} at ${timeSlot} GMT`;
+            const adminBody = `NEW BOOKING RECEIVED\n\n` +
+                `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+                `Client: ${clientName}\n` +
+                `Email: ${clientEmail}\n` +
+                `Date: ${date}\n` +
+                `Time: ${timeSlot} GMT\n` +
+                `Duration: 30 minutes\n` +
+                `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+                `Notes: ${note || 'Not specified'}\n` +
+                `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                `View all bookings in the admin panel (5 clicks on logo).`;
+            
+            // Email to client
+            const clientSubject = `✅ Your call with Adam2Solutions is confirmed - ${date} at ${timeSlot} GMT`;
+            const clientBody = `Hi ${clientName},\n\n` +
+                `Thanks for reaching out. I've reserved ${date} at ${timeSlot} GMT for our 30-minute conversation.\n\n` +
+                `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+                `📅 Date: ${date}\n` +
+                `⏰ Time: ${timeSlot} GMT\n` +
+                `💬 Where: A video call link will be sent to you 1 hour before our meeting\n` +
+                `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                `What you'd like to discuss:\n"${note || 'General guidance'}"\n\n` +
+                `This is a straightforward, no-obligation conversation. Come as you are.\n\n` +
+                `If you need to reschedule, just reply to this email.\n\n` +
+                `Looking forward to speaking with you,\n\n` +
+                `Adam\n` +
+                `Adam2Solutions`;
+            
+            // Open admin email in new window
+            window.open(`mailto:hello@adam2solutions.com?subject=${encodeURIComponent(adminSubject)}&body=${encodeURIComponent(adminBody)}`, '_blank');
+            
+            // Open client email in new window
+            setTimeout(() => {
+                window.open(`mailto:${clientEmail}?subject=${encodeURIComponent(clientSubject)}&body=${encodeURIComponent(clientBody)}`, '_blank');
+            }, 500);
         }
         
+        // Update the dropdown with available slots
         function updateSlotDropdown() {
-            if (!selectedDate) return;
-            
             const dropdown = document.getElementById('slotDropdown');
+            if (!dropdown) return;
+            
+            if (!selectedDate) {
+                dropdown.innerHTML = '<option value="">-- Select a date first --</option>';
+                return;
+            }
+            
             const today = new Date().toISOString().split('T')[0];
             const now = new Date();
             const currentTimeStr = `${now.getUTCHours().toString().padStart(2, '0')}:${now.getUTCMinutes().toString().padStart(2, '0')}`;
@@ -733,15 +693,28 @@
                 const isPast = selectedDate === today && slot < currentTimeStr;
                 const option = document.createElement('option');
                 option.value = slot;
-                option.textContent = `${slot} GMT ${isBooked ? '❌ BOOKED' : isPast ? '⏰ PAST' : '✅ OPEN'}`;
                 
-                if (isBooked || isPast) {
+                if (isBooked) {
+                    option.textContent = `${slot} GMT ❌ BOOKED`;
                     option.disabled = true;
                     option.style.color = '#F87171';
+                } else if (isPast) {
+                    option.textContent = `${slot} GMT ⏰ PAST`;
+                    option.disabled = true;
+                    option.style.color = '#6B7280';
+                } else {
+                    option.textContent = `${slot} GMT ✅ AVAILABLE`;
+                    option.style.color = '#4ade80';
                 }
                 
                 dropdown.appendChild(option);
             });
+        }
+        
+        // Refresh bookings from database
+        async function refreshBookings() {
+            currentBookings = await loadBookings();
+            updateSlotDropdown();
         }
         
         function showToast(message, isError = false) {
@@ -754,18 +727,42 @@
             }, 3000);
         }
         
-        // Initialize
+        // Initialize Supabase
+        async function initSupabase() {
+            try {
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                console.log('Supabase client created');
+                
+                // Test connection by trying to select from bookings table
+                const { data, error } = await supabase
+                    .from('bookings')
+                    .select('count', { count: 'exact', head: true });
+                
+                if (error) {
+                    console.warn('Bookings table not ready:', error.message);
+                    showToast('⚠️ Using local storage - Supabase table not ready', true);
+                    bookingsTableReady = false;
+                } else {
+                    console.log('✅ Supabase connected, bookings table ready');
+                    bookingsTableReady = true;
+                }
+            } catch (e) {
+                console.error('Supabase init error:', e);
+                bookingsTableReady = false;
+            }
+            
+            // Always load bookings (from Supabase if available, otherwise localStorage)
+            await refreshBookings();
+        }
+        
+        // Initialize the page
         const datePicker = document.getElementById('datePicker');
         const today = new Date().toISOString().split('T')[0];
         datePicker.value = today;
         datePicker.min = today;
         selectedDate = today;
         
-        initSupabase().then(() => {
-            refreshBookings();
-        });
-        initEmailJS();
-        
+        // Set up event listeners
         datePicker.addEventListener('change', async (e) => {
             selectedDate = e.target.value;
             selectedSlot = null;
@@ -779,7 +776,7 @@
         const slotDropdown = document.getElementById('slotDropdown');
         slotDropdown.addEventListener('change', (e) => {
             selectedSlot = e.target.value;
-            if (selectedSlot) {
+            if (selectedSlot && !e.target.disabled) {
                 const form = document.getElementById('bookingForm');
                 form.classList.add('visible');
                 form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -821,7 +818,7 @@
             
             const success = await addBooking(selectedDate, selectedSlot, name, email, note);
             if (success) {
-                showToast(`✅ Booking confirmed! You'll receive a confirmation email shortly.`);
+                showToast(`✅ Booking confirmed! Check your email for confirmation.`);
                 document.getElementById('clientName').value = '';
                 document.getElementById('clientEmail').value = '';
                 document.getElementById('clientNote').value = '';
@@ -834,7 +831,7 @@
             }
         });
         
-        // ========== ADMIN SYSTEM ==========
+        // ========== ADMIN SYSTEM (5 clicks on logo) ==========
         let clickCount = 0;
         let clickTimer = null;
         let isAdminMode = false;
@@ -909,8 +906,9 @@
             if (!isAdminMode) { showToast('Admin mode required', true); return; }
             if (confirm('⚠️ PERMANENT: Delete ALL bookings? This cannot be undone.')) {
                 if (supabase && bookingsTableReady) {
-                    const { error } = await supabase.from('bookings').delete().neq('id', 0);
-                    if (error) console.error('Error clearing:', error);
+                    try {
+                        await supabase.from('bookings').delete().neq('id', 0);
+                    } catch(e) { console.error('Error clearing:', e); }
                 }
                 localStorage.removeItem(STORAGE_KEY);
                 await refreshBookings();
@@ -919,11 +917,14 @@
         });
         
         document.getElementById('copyEmailBtn')?.addEventListener('click', async () => {
-            await navigator.clipboard.writeText('support@adam2solutions.com');
+            await navigator.clipboard.writeText('hello@adam2solutions.com');
             showToast('📧 Email copied');
         });
         
-        console.log('🍎 Adam2Solutions | Supabase connected | Admin: 5 clicks on logo');
+        // Start the app
+        initSupabase();
+        
+        console.log('🍎 Adam2Solutions | Booking system ready | Admin: 5 clicks on logo');
     </script>
 </body>
 </html>
